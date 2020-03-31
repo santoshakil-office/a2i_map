@@ -1,0 +1,71 @@
+#qrcode img {
+    /* height: 450px; */
+    padding: 1em 1em 1em 10em;
+}
+
+.thumbnail {
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
+    transition: 0.3s;
+    min-width: 50%;
+    border-radius: 5px;
+  }
+ 
+  .thumbnail-description {
+    min-height: 40px;
+  }
+ 
+  /* .thumbnail:hover {
+    cursor: pointer; 
+     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 1);
+  }
+
+  .qrcode-card {
+      
+  } */
+
+  .dncc-places, .qrcode-card {
+      padding-top: 2em;
+  }
+
+  /* .dncc-places ul{
+      overflow-y: auto;
+
+  } */
+ 
+  .full-height, .dncc-places {
+      height: 100%;
+  }
+
+  .dncc-places ul{
+      
+      height: 500px;
+      overflow: auto;
+      /* box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.3); */
+
+  }
+
+  .dncc-places ul li {
+      background-color: aliceblue;
+      margin-bottom: .2em;
+  }
+
+  .dnccListCodeH4 {
+      display: inline-block;
+      padding-right: 1em;
+      font-weight: bolder;
+  }
+
+  .dncc-places-search {
+      padding-bottom: .45em;
+  }
+
+
+  @media only screen 
+and (min-device-width: 1200px)
+and (-webkit-min-device-pixel-ratio: 2) {
+
+    #qrcode img {
+         padding: 1em 1em 1em 13.4em;
+        
+    }
+}

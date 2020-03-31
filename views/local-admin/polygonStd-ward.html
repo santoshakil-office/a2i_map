@@ -1,0 +1,126 @@
+<div class="content map-content map-content">
+    <div class="animated fadeIn">
+    </div>
+
+    <div class="row">
+        <div ng-class="{'col-md-8': columnLeftEight,  'col-md-12': columnLeftFull}">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h4>Local Admin Ward</h4>
+                            <!-- <i class="fa fa-columns pull-right" ng-click="mapperPolygonSearchCollapse()"></i> -->
+                        </div>
+                        <div class="col-md-4">
+                            
+                                <div class="pull-right card-header-icons">
+
+                                        <i class="fa fa-columns " ng-click="updateColumnSize()"></i>
+                                </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="gmap_unix card-body" bs-loading-overlay bs-loading-overlay-reference-id="first">
+                    <leaflet class="map   map-view" center="center" markers="markers" controls="controls"
+                        layers="layers" event-broadcast="events" geojson="geojson">
+                </div>
+            </div>
+            <!-- /# card -->
+        </div>
+        <!-- /# column -->
+        <div ng-class="{'col-md-4': columnRight, 'hide-div':columnLeftFull, 'show-div':columnLeftEight }">
+            <div class="card">
+
+                <!-- bs-loading-overlay bs-loading-overlay-reference-id="first" -->
+                <div class="card-body card-block">
+
+
+                    <div class="tab-content mt-3" id="myTabContent">
+
+
+                        <div class="form-group">
+                                <label for="ward" class=" form-control-label label-sm">Ward</label>
+
+                            <div class="input-group">
+                                <select ng-model="ward" name="ward" ng-options="opt.ward_number for opt in wards" 
+                                ng-change="set_ward(ward)" class="form-control form-control-sm ">
+                                    <option value="" selected></option>
+                                </select>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                                <label for="zone" class=" form-control-label label-sm">Zone</label>
+                            <div class="input-group">
+                                <select ng-model="zone" name="zone" ng-options="opt.zone_number for opt in zones" 
+                                ng-change="set_zone(zone)" class="form-control form-control-sm ">
+                                    <option value="" selected></option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <p ng-if="currentlyEdting" class="my-3">Currently Editing: {{currentlyEdting}} </p>
+
+                        <div class="form-group">
+
+                                <button class="btn btn-warning btn-sm" ng-click="clearEditable()"> 
+                                        Reset Edit 
+                                </button>
+                            <button class="btn btn-primary btn-sm" type="button" data-toggle="collapse"
+                                ng-click="toggleList()" data-target="#collapseExampleWard" aria-expanded="false"
+                                aria-controls="collapseExample">
+                                Wards: <strong>{{totalSubtypes}}</strong>
+                            </button>
+                            <!-- <button class="btn btn-primary btn-sm" type="button"
+                                ng-click="clearDrawing()" ng-model="selected">
+                                Clear</strong>
+                            </button> -->
+
+                            <div class="collapse" id="collapseExampleWard">
+                                <div class="card card-body mt-2" style="max-height: 361px; overflow-y: auto;">
+                                    <label ng-repeat="ward in wards | orderBy: 'name'" ng-if="ward.key > -1">
+                                        <input type="checkbox" g-change="selectOption('ward', ward)" 
+                                        ng-model="ward.selected">
+                                        {{ward.name}}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- <div class="form-group">
+                            <button class="dropbtn" ng-click="toggleList()">Wards:
+                                <strong>{{totalSubtypes}}</strong></button>
+                            <button class="dangerbtn" ng-click="selectOption('ward', wards[0])"
+                                ng-model="selected">Clear All</button>
+                            <div class="dropdown-content"
+                                style="overflow-y: scroll; height: 70vh; padding-left: 10px; padding-top: 20px;">
+                                <label style="display: block;" ng-repeat="ward in wards | orderBy: 'name'"
+                                    ng-if="ward.key > -1">
+                                    <input type="checkbox" ng-change="selectOption('ward', ward)"
+                                        ng-model="ward.selected" style="width: 40px;">
+                                    {{ward.name}}<br>
+                                </label>
+                            </div>
+                        </div> -->
+                    </div>
+
+                </div>
+
+
+            </div>
+            <!-- /# card -->
+        </div>
+        <!-- /# column -->
+
+    </div>
+    <!-- /# row -->
+
+
+
+
+</div><!-- .animated -->
+</div><!-- .content -->
+<div class="clearfix"></div>

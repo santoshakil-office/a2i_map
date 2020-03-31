@@ -1,0 +1,63 @@
+ <div class="landing-page bs-loading-container" id="container1" bs-loading-overlay bs-loading-overlay-reference-id="first">
+          <pageslide ps-push="true" ps-open="toggle" ps-container="container1"  style="position: absolute; transition-duration: 0.5s;overflow-y:scroll; height: 100%; transition-property: top, bottom, left, right; width: 17em; top: 0px; bottom: 0px; right: -17em; background:white">
+                        <div style="padding:20px">
+                            <div>
+                                                         <select ng-model="area"  name="area"  ng-options="opt.name for opt in areas" ng-change="set_area(area)" class="form-control">
+                                                             </select>
+                                                      </div>
+                                                      
+                                                         <div>
+                                                         <select ng-model="subcategory"  name="subcategory"  ng-options="subcat.subtype for subcat in subcategories" ng-change="set_subType(area.name, subcategory.subtype)" class="form-control">
+                                                         <option value=""></option>
+                                                             </select>
+                                                      </div>
+                                                          <div>
+                                                            <p><small>Total Places: </small><h5>{{total}}</h5></p>
+                                                        
+                                                          </div>
+                                                           <input type="text" class="form-control search-query" ng-model="query" ng-change="search()" placeholder="Search">
+                                                        <div ng-repeat="nb in markers | filter:query">
+                <div id="elm{{nb.id}}" ng-class="{ listItemHover: mhover[nb.id], listItem: mout[nb.id] }"  class="listItem" ng-mouseover="nb.icon.iconSize=[32, 32]; nb.focus=false;" ng-mouseleave="nb.icon.iconSize=[16, 16]; nb.focus=false;" ng-click="changeCenter(nb)">
+                  <div class="row">
+                      <div class="col-md-12">
+                          
+                           <div >
+                               <b style="color:#000000a3">{{nb.Address}}</b>
+                           </div>
+                      </div> 
+                      <div class="col-md-12">
+                     <div ><b style="color:#ef1818bd">{{nb.uCode}}</b></div>
+                      </div> 
+                      <div class="col-md-12">
+                       <div><b><label>uDate: </label>{{nb.updated_at.split(' ', 2)[0]}}</b></div>
+                      </div>  
+
+                      <div class="col-md-12">
+                      <div><label>uID: </label><b style="color:#ef1818bd">{{nb.userID}}</b></div>
+                      </div> 
+
+                     
+                    
+                  </div>
+                </div>
+            </div> 
+
+                        </div>
+                    </pageslide>
+
+     
+      <style>
+        input {
+            width: 120px;
+            margin-right: 10px;
+        }
+    </style> 
+
+          <leaflet class="map map-view" center="center" markers="markers"  controls="controls" layers="layers" event-broadcast="events" geojson="geojson">
+      
+         <button class="btn btn-sm btn-danger btn-round" style="float:right;top: 4em;left: 3em;z-index:10;background:rgba(255,255,255,.15);" ng-click="openSlide()"><i class="material-icons" style="font-weight: bolder;color: black;padding-right: 1em;">
+          arrow_back_ios
+          </i></button>
+                             
+            </leaflet>              
+</div>

@@ -1,0 +1,258 @@
+<div ng-controller="rootCtrl" class=" bs-loading-container"  bs-loading-overlay bs-loading-overlay-reference-id="first">
+
+<div class="row vdivide">
+  <div ng-controller="sliderCtrl">
+     <!--  <div class="text-muted">dirty slider impl.</div> -->
+      <div style="position:relative;width:100%;height:1em;border:1px inset lightgray" ng-mousedown="container($event)" id="slider-box">
+        <div style="position:absolute;height:100%;background:#888;cursor:ew-resize" ng-style="{width:((limit/userList.length)*100)+'%',left:((start/userList.length)*100)+'%'}" ng-mousedown="slider($event)"></div>
+      </div>
+    </div>
+    <input type="text" ng-model="query">
+    <select ng-model="sort" ng-options="s for s in ['','sender_name','-sender_name','sender_number','-sender_number','delivery_man_name','-delivery_man_name']"></select><br>
+  <!-- <div class="col-sm-6">
+    <h3 style="text-align:center">Using angular.js power</h3> -->
+   <!--  <ul>
+      <li>repeat `tr` is `ng-repeat` and filters</li>
+      <li>DELETE button(it remove item from array)</li>
+      <li>header click and sort(`orderBy` and `ng-show` ▲▼)</li>
+    </ul>
+    filter:<input type="text" ng-model="query">
+    orderBy:<select ng-model="sort" ng-options="s for s in ['','name','-name','email','-email','age','-age']"></select><br>
+    limitTo:<select ng-model="start" ng-options="s for s in starts"></select> ～
+    <select ng-model="limit" ng-options="s for s in [0,10,30,100,300,500,800,1000]"></select> / {{(userList|filter:query).length}} items<br>
+    <div ng-controller="sliderCtrl">
+      <div class="text-muted">dirty slider impl.</div>
+      <div style="position:relative;width:100%;height:1em;border:1px inset lightgray" ng-mousedown="container($event)" id="slider-box">
+        <div style="position:absolute;height:100%;background:#888;cursor:ew-resize" ng-style="{width:((limit/userList.length)*100)+'%',left:((start/userList.length)*100)+'%'}" ng-mousedown="slider($event)"></div>
+      </div>
+    </div>
+    <button ng-click="hideMail=!hideMail">Hide mail</button>
+    <button ng-click="hideAge=!hideAge">Hide age</button>
+    
+    <button ng-click="cols.push(cols.length)">+</button>
+    <button ng-click="cols.pop()">-</button>
+  </div>
+  <div class="col-sm-6">
+    <h3 style="text-align:center">Using cell-cursor features</h3>
+    <ul>
+      <li>column width(and row height) resize by drag (`cell-cursor-drag` directive)</li>
+      <li>Sort by drag <span class="dragable"><span class="drag-handler">＝</span></span> (`cell-cursor-row-resize` and `cell-cursor-row-resize` directive)</li>
+      <li>cursor and range controll</li>
+      <li>cell editor</li>
+    </ul>
+    <button ng-click="cc.select({row:0,col:0},{row:-1,col:-1})">select()</button>
+    <button ng-click="cc.deselect()">deselect()</button>
+    <button ng-click="cc.selectMove({row:-1})">↑</button>
+    <button ng-click="cc.selectMove({row:1})">↓</button>
+    <button ng-click="cc.selectMove({col:-1})">←</button>
+    <button ng-click="cc.selectMove({col:1})">→</button><br>
+    <button ng-click="cc.setSelectedCellValues([['good','bad'],['good','bad@example.com']])">setSelectedCellValues([['good','bad'],['good','bad@example.com']])</button><br>
+    <button ng-click="cc.focus()">focus</button>
+    <button ng-click="cc.blur()">blur</button>
+  </div>
+</div>
+
+<div class="row" style="margin-top:2em;background:#eeeeee;padding-top:1em;padding-bottom:1em;"> -->
+<div class="col-sm-12">
+<!-- copy and paste handler -->
+<!-- overwrite keydown handler -->
+<!-- ng-class is hide drag-handler if can't draggable (css trick) -->
+<table class="table-data" style="float:left;margin-left: 2px;" cell-cursor="cc" cell-cursor-copy="cc.getSelectedCellValues()|cellCursorToTsv" cell-cursor-paste="cc.setSelectedCellValues($data)" ng-keydown="keydown($event)" ng-class="{dragable:dragable()}">
+  <thead>
+    <tr>
+      <td></td>
+      <!-- changeSort is change $scope.sort -->
+      <td ng-click="changeSort('sender_name')">
+        <div class="cell-cursor-col-resize"></div>
+        sender_name
+        <!-- sort key indicator example -->
+        <span ng-show="sort=='sender_name'">▲</span>
+        <span ng-show="sort=='-sender_name'">▼</span>
+      </td> 
+
+      <td ng-click="changeSort('sender_number')">
+        <div class="cell-cursor-col-resize"></div>
+        Sender Number
+        <!-- sort key indicator example -->
+        <span ng-show="sort=='sender_number'">▲</span>
+        <span ng-show="sort=='-sender_number'">▼</span>
+      </td> 
+
+      <td ng-click="changeSort('delivery_man_name')">
+        <div class="cell-cursor-col-resize"></div>
+        Delivery Man Name
+        <!-- sort key indicator example -->
+        <span ng-show="sort=='delivery_man_name'">▲</span>
+        <span ng-show="sort=='-delivery_man_name'">▼</span>
+      </td> 
+
+      <td ng-click="changeSort('delivery_man_number')">
+        <div class="cell-cursor-col-resize"></div>
+        Delivery Man Number
+        <!-- sort key indicator example -->
+        <span ng-show="sort=='delivery_man_number'">▲</span>
+        <span ng-show="sort=='-delivery_man_number'">▼</span>
+      </td> 
+
+      <td ng-click="changeSort('receivers_name')">
+        <div class="cell-cursor-col-resize"></div>
+        Receivers Name
+        <!-- sort key indicator example -->
+        <span ng-show="sort=='receivers_name'">▲</span>
+        <span ng-show="sort=='-receivers_name'">▼</span>
+      </td>  
+
+      <td ng-click="changeSort('receivers_number')">
+        <div class="cell-cursor-col-resize"></div>
+        Receivers Numbers
+        <!-- sort key indicator example -->
+        <span ng-show="sort=='receivers_number'">▲</span>
+        <span ng-show="sort=='-receivers_numbers'">▼</span>
+      </td> 
+
+      <td ng-click="changeSort('delivery_company')">
+        <div class="cell-cursor-col-resize"></div>
+        Delivery Company
+        <!-- sort key indicator example -->
+        <span ng-show="sort=='delivery_company'">▲</span>
+        <span ng-show="sort=='-delivery_company'">▼</span>
+      </td> 
+
+      <td ng-click="changeSort('delivery_fee')">
+        <div class="cell-cursor-col-resize"></div>
+        Delivery Fee
+        <!-- sort key indicator example -->
+        <span ng-show="sort=='delivery_fee'">▲</span>
+        <span ng-show="sort=='-delivery_fee'">▼</span>
+      </td> 
+
+      <td ng-click="changeSort('product_price')">
+        <div class="cell-cursor-col-resize"></div>
+        Product Price
+        <!-- sort key indicator example -->
+        <span ng-show="sort=='product_price'">▲</span>
+        <span ng-show="sort=='-product_price'">▼</span>
+      </td> 
+
+      <td ng-click="changeSort('product_weight')">
+        <div class="cell-cursor-col-resize"></div>
+        Product Weight
+        <!-- sort key indicator example -->
+        <span ng-show="sort=='product_weight'">▲</span>
+        <span ng-show="sort=='-product_weight'">▼</span>
+      </td> 
+
+      <td ng-click="changeSort('pick_up')">
+        <div class="cell-cursor-col-resize"></div>
+        Pick Up
+        <!-- sort key indicator example -->
+        <span ng-show="sort=='pick_up'">▲</span>
+        <span ng-show="sort=='-pick_up'">▼</span>
+      </td> 
+
+      <td ng-click="changeSort('pick_up_date')">
+        <div class="cell-cursor-col-resize"></div>
+        Pick Up Ddate
+        <!-- sort key indicator example -->
+        <span ng-show="sort=='pick_up_date'">▲</span>
+        <span ng-show="sort=='-pick_up_date'">▼</span>
+      </td> 
+
+      <td ng-click="changeSort('drop_off')">
+        <div class="cell-cursor-col-resize"></div>
+        Drop Off
+        <!-- sort key indicator example -->
+        <span ng-show="sort=='drop_off'">▲</span>
+        <span ng-show="sort=='-drop_off'">▼</span>
+      </td>  
+
+     
+
+     
+      <!-- <td ng-hide="hideMail" ng-click="changeSort('email')">
+        <div class="cell-cursor-col-resize"></div>
+        email
+        <span ng-show="sort=='email'">▲</span>
+        <span ng-show="sort=='-email'">▼</span>
+      </td>
+      <td ng-hide="hideAge" ng-click="changeSort('age')"><div class="cell-cursor-col-resize"></div>
+        age
+        <span ng-show="sort=='age'">▲</span>
+        <span ng-show="sort=='-age'">▼</span>
+      </td>
+      <td><div class="cell-cursor-col-resize"></div>admin</td> -->
+      <!-- complex columns sample -->
+<!--       <td ng-repeat="i in cols track by i"><div class="cell-cursor-col-resize"></div>{{i}}</td>
+ -->    </tr>
+  </thead>
+  <tbody>
+    <!-- angular.js default directive `ng-repeat` and default filters -->
+    <tr ng-repeat="user in userList|filter:query|orderBy:sort|limitTo:limit:start as result" ng-class="{error:isError(user)}">
+      <td class="id"><div class="cell-cursor-row-resize"></div>
+        <!-- drag-drop handle -->
+        <span class="drag-handler" cell-cursor-drag="cc">＝</span>
+        {{user.id}}
+      </td>
+
+      <!-- using ng-model with getter-setter sample -->
+      <td ng-dblclick="cc.openEditor()" ng-hide="hideName" ng-model="user.sender_name" ng-model-options="{getterSetter:true}" cell-cursor-options="{editor:'text'}"><div class="wrap">{{user.sender_name}}</div></td> 
+
+      <td ng-dblclick="cc.openEditor()" ng-hide="hideName" ng-model="user.sender_number" ng-model-options="{getterSetter:true}" cell-cursor-options="{editor:'text'}"><div class="wrap">{{user.sender_number}}</div>
+      </td>
+
+      <td ng-dblclick="cc.openEditor()" ng-hide="hideName" ng-model="user.delivery_man_name" ng-model-options="{getterSetter:true}" cell-cursor-options="{editor:'text'}"><div class="wrap">{{user.delivery_man_name}}</div></td> 
+
+      <td ng-dblclick="cc.openEditor()" ng-hide="hideName" ng-model="user.delivery_man_number" ng-model-options="{getterSetter:true}" cell-cursor-options="{editor:'text'}"><div class="wrap">{{user.delivery_man_number}}</div></td>
+
+      <td ng-dblclick="cc.openEditor()" ng-hide="hideName" ng-model="user.receivers_name" ng-model-options="{getterSetter:true}" cell-cursor-options="{editor:'text'}"><div class="wrap">{{user.receivers_name}}</div></td> 
+
+      <td ng-dblclick="cc.openEditor()" ng-hide="hideName" ng-model="user.receivers_number" ng-model-options="{getterSetter:true}" cell-cursor-options="{editor:'text'}"><div class="wrap">{{user.receivers_number}}</div></td>
+
+      <td ng-dblclick="cc.openEditor()" ng-hide="hideName" ng-model="user.delivery_company" ng-model-options="{getterSetter:true}" cell-cursor-options="{editor:'text'}"><div class="wrap">{{user.delivery_company}}</div></td> 
+
+      <td ng-dblclick="cc.openEditor()" ng-hide="hideName" ng-model="user.delivery_fee" ng-model-options="{getterSetter:true}" cell-cursor-options="{editor:'text'}"><div class="wrap">{{user.delivery_fee}}</div></td>
+
+      <td ng-dblclick="cc.openEditor()" ng-hide="hideName" ng-model="user.product_price" ng-model-options="{getterSetter:true}" cell-cursor-options="{editor:'text'}"><div class="wrap">{{user.product_price}}</div></td> 
+
+      <td ng-dblclick="cc.openEditor()" ng-hide="hideName" ng-model="user.product_weight" ng-model-options="{getterSetter:true}" cell-cursor-options="{editor:'text'}"><div class="wrap">{{user.product_weight}}</div></td>
+
+     
+      <td ng-dblclick="cc.openEditor()" ng-hide="hideName" ng-model="user.pick_up" ng-model-options="{getterSetter:true}" cell-cursor-options="{editor:'text'}"><div class="wrap">{{user.pick_up}}</div></td>
+
+      <td ng-dblclick="cc.openEditor()" ng-hide="hideName" ng-model="user.pick_up_date" ng-model-options="{getterSetter:true}" cell-cursor-options="{editor:'text'}"><div class="wrap">{{user.pick_up_date}}</div></td> 
+
+      <td ng-dblclick="cc.openEditor()" ng-hide="hideName" ng-model="user.drop_off" ng-model-options="{getterSetter:true}" cell-cursor-options="{editor:'text'}"><div class="wrap">{{user.drop_off}}</div></td>
+
+      <!-- using ng-model and setter sample -->
+      <!-- <td ng-dblclick="cc.openEditor()" ng-model="user.email" cell-cursor-options="{editor:'text',setter:emailSetter(user)}"><div class="wrap">{{user.email}}</div></td>
+ -->
+      <!-- using delegate `input` sample -->
+
+      
+     <!--  <td ng-dblclick="cc.openEditor()" cell-cursor-options="{input:'input'}"><input type="text" ng-model="user.sender_name" style="width:50px;border:0px"></td>
+ -->
+      <!-- using delegate `input` and custome editor sample -->
+     <!--  <td cell-cursor-options="{input:'input',editor:'boolean'}"><input type="checkbox" ng-model="user.admin"></td> -->
+
+      <!-- complex columns sample -->
+     <!--  <td ng-repeat="i in cols track by i">{{user.name.charAt(i)}}</td> -->
+
+      <!-- <td><select ng-options="['','name','-name','email','-email','age','-age']"></select></td>  -->
+
+      <td><button ng-click="delete(user)">DELETE</button></td>
+    </tr>
+  </tbody>
+</table>
+<div style="font-size:0px;color:rgba(255,255,255,.15)">
+<!-- <h4>VALUES from cellCursor object</h4>
+hasFocus={{cc.hasFocus}}<br>
+<br>
+selected={{cc.selected}}<br>
+<br>
+getSelectedCellValues()={{cc.getSelectedCellValues()}}<br>
+<br> -->
+users={{exportSelected()}}
+</div>
+</div>
+</div>
+</div>

@@ -1,0 +1,84 @@
+<div class="content">
+    <div class="animated fadeIn">
+
+        <div class="row">
+            <!-- /# column -->
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header"><strong>Replace Data</strong></div>
+
+                    <!-- bs-loading-overlay bs-loading-overlay-reference-id="first" -->
+                    <div class="card-body card-block" bs-loading-overlay bs-loading-overlay-reference-id="first">
+                        <form ng-submit="replace('first')">
+                            <div class="row form-group">
+
+                                <div class="col-6">
+                                    <div class="form-group"><label for="old" class=" form-control-label label-sm">Old
+                                            Value</label><input ng-model="x" type="text" id="old" 
+                                            class="form-control"></div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group"><label for="new" class=" form-control-label label-sm ">New
+                                            Value</label><input ng-model="y" type="text" id="new" 
+                                            class="form-control"></div>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-md btn-success " 
+                                        ng-disabled="fixForm1.$invalid">
+                                        <i class="fa fa-plus-circle"></i> Replace
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+
+                        <form class="mt-3" ng-submit="replace_word('first')">
+                            <div class="row form-group">
+                                <div class="col-md-6">
+                                    <div class="form-group"><label for="data"
+                                            class=" form-control-label label-sm">Data</label><input ng-model="data"
+                                            type="text" id="data" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group"><label for="ward"
+                                            class=" form-control-label label-sm">Ward</label><input ng-model="ward"
+                                            type="text" id="ward"  class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="ward" class=" form-control-label label-sm">Select Type</label>
+                                    <select class="form-control" name="slot" id="slot"
+                                        ng-options="option.ts for option in fields.availableOptions track by option.id"
+                                        ng-model="fields.selectedOption" required>
+
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="ward" class=" form-control-label label-sm">Select Ward</label>
+                                    <select class="form-control" name="upfield" id="upfield"
+                                        ng-options="option.ts for option in upfields.availableOptions track by option.id"
+                                        ng-model="upfields.selectedOption" required>
+
+                                    </select>
+                                </div>
+
+                            </div>
+                            <button type="submit" class="btn btn-success btn-md">
+                                <i class="fa fa-plus-circle"></i> Update
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <!-- /# card -->
+            </div>
+            <!-- /# column -->
+
+        </div>
+        <!-- /# row -->
+
+
+
+
+    </div><!-- .animated -->
+</div><!-- .content -->

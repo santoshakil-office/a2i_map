@@ -1,0 +1,184 @@
+<div class="content map-content">
+    <div class="animated fadeIn">
+
+        <div class="row">
+            <div ng-class="{'col-md-8': birdsEyeLeftEight,  'col-md-12': birdsEyeLeftFull}" id="birdseye-left">
+                <!-- <div class="col-md-8"> -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-md-10">
+                                <h4>Birds Eye View </h4>
+                            </div>
+                            <div class="col-md-2">
+                                <i class="fa fa-columns pull-right" ng-click="birdsEyeCollapse()"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gmap_unix card-body" bs-loading-overlay bs-loading-overlay-reference-id="first">
+                        <leaflet class="map map-view" center="center" defaults="defaults" layers="layers"
+                            markers="markers | filter:query" width='100%'>
+
+                        </leaflet>
+                    </div>
+                </div>
+                <!-- /# card -->
+            </div>
+            <!-- /# column -->
+            <!-- bs-loading-overlay bs-loading-overlay-reference-id="first" -->
+            <div ng-class="{ 'col-md-4': birdsEyeRight, 'hide-div':birdsEyeLeftFull, 'show-div':birdsEyeLeftEight }"
+                id="birdseye-right">
+                <!-- <div class="col-md-4"> -->
+                <div class="card">
+
+                    <div class="card-body">
+
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active show" id="home-tab" data-toggle="tab" href=""
+                                    data-target="#birdeyedate" role="tab" aria-controls="home"
+                                    aria-selected="true">Filter</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="profile-tab" data-toggle="tab" data-target="#birdeyeresults"
+                                    role="tab" aria-controls="profile" aria-selected="false">Results</a>
+                            </li>
+                        </ul>
+
+                        <div class="tab-content mt-3" id="myTabContent">
+                            <div class="tab-pane fade active show" id="birdeyedate" role="tabpanel"
+                                aria-labelledby="home-tab">
+
+                                <div class="row form-group">
+                                    <div class="col-md-12">
+                                        <input type="text" ng-model="query"
+                                            class="form-control form-control-sm input-sm"
+                                            placeholder="Search addresses on map">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="label-sm">Sub Category</label>
+                                    <select ng-model="subcategory" name="subcategory"
+                                        ng-options="subcat.subtype for subcat in subcategories"
+                                        ng-change="set_subType(area.name, subcategory.subtype)"
+                                        class="form-control form-control-sm input-sm">
+                                        <option value=""></option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="ward" class=" form-control-label label-sm">From</label>
+                                    <input type="date" ng-model="date2" id="ward" placeholder="Ward"
+                                        class="form-control form-control-sm input-sm">
+
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="ward" class=" form-control-label label-sm">To</label>
+                                    <input type="date" ng-model="date1" id="ward" placeholder="Ward"
+                                        class="form-control form-control-sm input-sm">
+                                </div>
+
+
+                                <div class="form-actions form-group">
+                                    <button class="btn btn-sm btn-info" ng-click="set_date_interval()">Set Date</button>
+
+                                </div>
+
+                                <h5 class="mt-2" ng-if="total">Total: {{total}}</h5>
+                            </div>
+
+                            <div class="tab-pane fade show" id="birdeyeresults" role="tabpanel"
+                                aria-labelledby="profile-tab">
+
+                                <div class="row mb-4">
+                                    <div class="col-md-12">
+                                        <input type="text" ng-model="beyeres"
+                                            class="form-control form-control-sm input-sm" placeholder="Filter Results">
+                                    </div>
+                                </div>
+
+                                <div class="polygon-search-overflow">
+                                    <div ng-repeat="nb in markers|filter:beyeres">
+                                        <!-- <div id="elm{{nb.id}}" ng-click="changeCenter(nb)"> -->
+                                        <div class="card" id="elm{{nb.id}}" ng-click="changeCenter(nb)">
+                                            <div class="card-header">
+                                                <small><span
+                                                        class="badge badge-info float-left mt-1">{{nb.ptype}}</span></small>
+                                                &nbsp
+                                                <small><span
+                                                        class="badge badge-info float-left mt-1">{{nb.subtype}}</span>
+                                                </small>
+                                                <small class="float-right"><i class="ti-user"></i>
+                                                    <span>{{nb.userID}}</span></small>
+                                            </div>
+                                            <div class="card-body" style="padding: 10px 0 0 10px;">
+                                                <div class="mx-auto d-block">
+                                                    <div class="mt-1 ng-binding">
+                                                        <i class="ti-home"></i> <span
+                                                            class="ng-binding">{{nb.Address}}</span><br>
+                                                        <i class="ti-direction"></i> <span class="ng-binding">Area:
+                                                            {{nb.area}}</span><br>
+
+                                                        <i class="ti-calendar"></i> <span class="ng-binding">Date:
+                                                            </label>{{nb.updated_at.split(' ', 2)[0]}}</span><br>
+                                                        <br>
+                                                        <!-- <i class="ti-info"></i> <span>{{userinfo.created_at}}</span><br> -->
+                                                        </address>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <!-- <div class="polygon-search-overflow ">
+                                    <div ng-repeat="nb in markers| filter: query2 " >
+                                        <div class="card" ng-click="changeCenter(nb)">
+                                            <div class="card-header">
+                                                <small><span class="badge badge-info float-left mt-1">{{nb.ptype}}</span></small>
+                                                &nbsp
+                                                <small><span class="badge badge-info float-left mt-1">{{nb.subtype}}</span> </small>
+                                                <small class="float-right"><i class="ti-user"></i>
+                                                    <span>{{nb.userID}}</span></small>
+                                            </div>
+                                            <div class="card-body" style="padding: 10px 0 0 10px;">
+                                                <div class="mx-auto d-block">
+                                                    <div class="mt-1 ng-binding">
+                                                        <i class="ti-home"></i> <span class="ng-binding">{{nb.Address}}</span><br>
+                                                        <i class="ti-direction"></i> <span class="ng-binding">Area:
+                                                            {{nb.area}}</span><br>
+            
+                                                        <i class="ti-calendar"></i> <span class="ng-binding">Date:
+                                                            </label>{{nb.updated_at.split(' ', 2)[0]}}</span><br>
+                                                        <br>
+                                                        </address>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+            
+                                    </div>
+                                </div> -->
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+
+            </div>
+            <!-- /# column -->
+
+        </div>
+        <!-- /# row -->
+
+
+
+
+    </div><!-- .animated -->
+</div><!-- .content -->
+<div class="clearfix"></div>

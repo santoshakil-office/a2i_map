@@ -1,0 +1,126 @@
+<div class="content map-content map-content">
+  <div class="animated fadeIn">
+  </div>
+
+  <div class="row">
+    <div ng-class="{'col-md-8': columnLeftEight,  'col-md-12': columnLeftFull}">
+      <div class="card">
+        <div class="card-header">
+          <div class="row">
+            <div class="col-md-8">
+              <h4>Local Admin Sub Area</h4>
+              <!-- <i class="fa fa-columns pull-right" ng-click="mapperPolygonSearchCollapse()"></i> -->
+            </div>
+            <div class="col-md-4">
+              <i class="fa fa-columns pull-right" ng-click="updateColumnSize()"></i>
+            </div>
+          </div>
+        </div>
+        <div class="gmap_unix card-body" bs-loading-overlay bs-loading-overlay-reference-id="first">
+          <leaflet class="map   map-view" center="center" markers="markers" controls="controls" layers="layers"
+            event-broadcast="events" geojson="geojson">
+        </div>
+      </div>
+      <!-- /# card -->
+    </div>
+    <!-- /# column -->
+    <div ng-class="{'col-md-4': columnRight, 'hide-div':columnLeftFull, 'show-div':columnLeftEight }">
+      <div class="card">
+
+        <!-- bs-loading-overlay bs-loading-overlay-reference-id="first" -->
+        <div class="card-body card-block">
+
+
+          <div class="form-group">
+            <label for="zone" class=" form-control-label label-sm">Select Sub Area</label>
+
+            <div class="input-group">
+              <select ng-model="subarea" name="subarea" ng-options="opt.subarea_name for opt in subareas"
+                ng-change="set_sub_area(subarea)" class="form-control form-control-sm ">
+                <option value="" selected></option>
+              </select>
+
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="zone" class=" form-control-label label-sm">Select Area</label>
+            <div class="input-group">
+              <select ng-model="area" name="area" ng-options="opt.area_name for opt in areas" 
+              ng-change="set_area(area)"
+                class="form-control form-control-sm ">
+                <option value="" selected></option>
+              </select>
+            </div>
+
+          </div>
+
+          <p ng-if="currentlyEdting" class="my-3">Currently Editing: {{currentlyEdting}} </p>
+
+
+          <div class="form-group">
+
+              <button class="btn btn-warning btn-sm" ng-click="clearEditable()"> 
+                  Reset Edit 
+          </button>
+
+            <button class="btn btn-primary btn-sm" type="button" data-toggle="collapse" ng-click="toggleList()"
+              data-target="#collapseExampleWard" aria-expanded="false" aria-controls="collapseExample">
+              Sub Areas: <strong>{{totalSubtypes}}</strong>
+            </button>
+            <button class="btn btn-primary btn-sm" type="button" ng-click="selectOption('area', subareas[0])" 
+            ng-model="selected">
+              Clear</strong>
+            </button>
+
+            <div class="collapse" id="collapseExampleWard">
+              <div class="card card-body mt-2" style="max-height: 365px; overflow-y: auto;">
+
+                  <input type="text" class="form-control form-control-sm search-query mb-2" ng-model="dropQuery" ng-change="search()"
+                  placeholder="Search">
+
+                <label ng-repeat="subarea in subareas | orderBy: 'name' | filter: (dropQuery)"
+                ng-if="subarea.key > -1">
+                  <input type="checkbox" ng-change="selectOption('subarea', subarea)" ng-model="subarea.selected">
+                  {{subarea.name}}
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- <div class="form-group">
+                        <button class="dropbtn" ng-click="toggleList()">Subareas:
+                            <strong>{{totalSubtypes}}</strong></button>
+                        <button class="dangerbtn" ng-click="selectOption('area', subareas[0])" ng-model="selected">Clear
+                            All</button>
+                        <div class="dropdown-content"
+                            style="overflow-y: scroll; height: 70vh; padding-left: 10px; padding-top: 20px;">
+                            <input type="text" class="form-control search-query" ng-model="dropQuery"
+                                ng-change="search()" placeholder="Search">
+                            <label style="display: block;"
+                                ng-repeat="subarea in subareas | orderBy: 'name' | filter: (dropQuery)"
+                                ng-if="subarea.key > -1">
+                                <input type="checkbox" ng-change="selectOption('subarea', subarea)"
+                                    ng-model="subarea.selected" style="width: 40px;">
+                                {{subarea.name}}<br>
+                            </label>
+                        </div>
+                    </div> -->
+
+        </div>
+
+
+      </div>
+      <!-- /# card -->
+    </div>
+    <!-- /# column -->
+
+  </div>
+  <!-- /# row -->
+
+
+
+
+</div><!-- .animated -->
+</div><!-- .content -->
+<div class="clearfix"></div>

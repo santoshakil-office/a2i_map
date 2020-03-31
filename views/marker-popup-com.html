@@ -1,0 +1,29 @@
+<div ng-controller="MarkerPopupVault">
+	<div ngCloak style="    width: fit-content !important;
+    background: white;
+    margin: 0em 0em;
+    border-radius: 1em;">
+		
+
+	<div>
+		<p><b>Address</b>: {{place.Address}}&nbsp&nbsp<b>Area</b>:{{place.area}}&nbsp&nbsp<b>pType</b>: {{place.ptype}}&nbsp&nbsp<b>Subtype</b>: {{place.subtype}}&nbsp&nbsp&nbsp<b>Code</b>:
+		{{place.uCode}}
+	</div></p>
+
+	<!-- <div ng-click="changeFlag()">
+		update flag
+	</div> -->
+
+	<hr>
+	<!-- <div>
+		<b>updated_at</b>: {{place.updated_at}}&nbsp&nbsp&nbsp<b>userId</b>: {{place.userID}}
+	</div>
+
+	<hr> -->
+	<div>
+		<button class="btn btn-sm btn-danger btn-round" ng-click="delete_location()" data-toggle="tooltip" data-placement="right" title="Delete from Vault"> <i class="fa fa-trash"></i></button>
+        <button class="btn btn-sm btn-info btn-round" ng-click="update_place_modal()" data-toggle="tooltip" data-placement="right" title="Edit"> <i class="fa fa-edit"></i></button>
+        <button class="btn btn-sm btn-info btn-round" ng-click="move_to_places(nb)" data-toggle="tooltip" data-placement="right" title="Move to Places"> <i class="fa fa-table"></i></button>
+	</div>
+</div>
+</div>

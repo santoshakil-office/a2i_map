@@ -1,0 +1,53 @@
+<div ng-cloak    class="alert-center  animate-slide"  ng-show="slide" ng-init="focus=false;blur=true;">
+    <div class="user-view">
+    <i class="fa fa-times" aria-hidden="true" style="float:right;font-size:20px" ng-click="close()"></i>
+
+        <div class="" style="padding:0px;">
+        
+        <div class="text-center" style="padding-bottom:4px;">
+        
+        <a  class="text-center" href="#"> <img src="views/assets/img/logo2.png" alt="..." class="foo-brand" style="height: 55px"></a>  
+        <div class="text-center">  
+            <form>
+            <input type="text" ng-class="{ searchBarFocus: focus, searchBarBlur: blur }"  name="search" placeholder="Search.." typeahead-on-select='onSelect($item)' typeahead="user.Address for user in users($viewValue)" ng-model="selecting"  aria-autocomplete="list" ng-model="selecting"  ng-focus="focus=true;blur=false;" ng-blur="blur=true;focus=false;">
+            </form>
+      </div>  
+         </div>
+
+      <div style="border: 2px solid #25de4fe0; border-radius: 15px;
+    margin: 0px 20px;">
+        <div  style="box-shadow:box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.42), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);">
+             <h6 class="h6 text-center">...Search Results...</h6>
+        </div>
+        <div style="padding-bottom: 4vh;overflow-y: hidden;height: -webkit-fill-available;display:block">
+            <div ng-repeat="nb in markers">
+                <div id="elm{{nb.id}}" ng-class="{ listItemHover: mhover[nb.id], listItem: mout[nb.id] }"  class="listItem" ng-mouseover="nb.icon.iconSize=[90, 90]" ng-mouseleave="nb.icon.iconSize=[54, 54]" ng-click="changeCenter(nb)">
+                  <div class="row">
+                      <div class="col-md-12">
+                           <div class="col-md-1">
+                               <i class="material-icons">place</i> 
+                           </div>
+                           <div class="col-md-10">
+                               <b style="color:#000000a3">{{nb.message}}</b>
+                           </div>
+                      </div> 
+                      <div class="col-md-12">
+                        <div class="col-md-4"><b>{{nb.pType}}</b></div> <div class="col-md-4"><b><label></label>{{nb.subType}}</b></div><div class="col-md-4"><b style="color:#ef1818bd">{{nb.uCode}}</b></div>
+                      </div> 
+
+                      <div class="col-md-12">
+                        <div class="col-md-6"><span class="badge badge-info">Ward:{{nb.ward}}</span></div> <div class="col-md-6"><span class="badge badge-info">Zone:{{nb.zone}}</span></div>
+                      </div>
+                    
+                  </div>
+                </div>
+            </div>
+            
+        </div>
+           
+      </div>   
+          
+        </div>
+    
+    </div>
+</div>

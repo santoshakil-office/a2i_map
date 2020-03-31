@@ -1,0 +1,298 @@
+<div class="content">
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <strong>Update</strong>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="input-group">
+                                    <input type="text" id="input2-group2" ng-model="mlatlng" placeholder="lat, lon"
+                                        placeholder="Email" class="form-control form-control-sm input-sm">
+                                    <div class="input-group-btn"><button ng-click="set_marker_position(mlatlng)"
+                                            class="btn btn-success btn-sm">&nbspSet</button></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gmap_unix card-body">
+                        <leaflet center="center" event-broadcast="events" markers="markers" geojson="geojson"
+                            layers="layers" controls="controls" geojson="geojson" height="450px" width="100%"></leaflet>
+
+                    </div>
+                </div>
+                <!-- /# card -->
+            </div>
+            <!-- /# column -->
+
+            <div class="col-lg-7">
+
+                <div class="card">
+                    <div class="card-header">
+                        <div id="search-from-form">
+                            <input type="text" class="form-control  form-control-sm input-sm" name="search"
+                                autocomplete="off" placeholder="Search.." typeahead-on-select='onSelect($item)'
+                                typeahead="user.Address for user in users($viewValue)" ng-model="selecting"
+                                aria-autoc1omplete="list" ng-model="selecting" ng-focus="focus=true;blur=false;"
+                                ng-blur="blur=true;focus=false;" ng-model-options="{ debounce: 400 }">
+                        </div>
+                    </div>
+                    <form name="placeForm" ng-submit="add_place('first')">
+                        <div class="card-body card-block">
+                            <div class="form-group">
+                                <input ng-model="address.Address" type="text" id="company"
+                                    class=" input-sm form-control-sm form-control" readonly>
+                            </div>
+
+
+                            <!-- Name -->
+                            <div class="row form-group">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label for="name" class=" form-control-label label-sm">Name</label>
+                                        <input ng-model="address.name" type="text" id="name"
+                                            class="input-sm form-control-sm form-control"></div>
+                                </div>
+                            </div>
+
+                            <!-- Building/Market -->
+                            <div class="row form-group">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label for="city" class=" form-control-label label-sm">Building/Market</label>
+                                        <input ng-model="address.section" type="text" id="city"
+                                            class=" input-sm form-control-sm form-control">
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="row form-group">
+
+                                <!-- House -->
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label for="road" class=" form-control-label label-sm">Holding</label>
+
+                                        <input ng-model="address.house" type="text" id="city"
+                                            class=" input-sm form-control-sm form-control">
+                                    </div>
+                                </div>
+
+                                <!-- Floor -->
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label for="road" class=" form-control-label label-sm">Floor</label>
+                                        <input ng-model="address.floor" type="text" id="city"
+                                            class=" input-sm form-control-sm form-control">
+                                    </div>
+                                </div>
+
+                                <!-- # of Floors -->
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label for="road" class=" form-control-label label-sm">Number of Floors</label>
+                                        <input ng-model="address.number_of_floors" type="text" id="city"
+                                            class=" input-sm form-control-sm form-control">
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+
+
+
+
+                            <div class="row form-group">
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label for="road" class=" form-control-label label-sm">Road</label>
+                                        <input ng-model="address.road" type="text" id="road"
+                                            class=" input-sm form-control-sm form-control"></div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label for="sup-sub-area" class=" form-control-label label-sm">Sup
+                                            Sub-Area</label>
+                                        <input ng-model="address.super_sub_area" type="text" id="sup-sub-area"
+                                            class=" input-sm form-control-sm form-control"></div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label for="sub-area" class=" form-control-label label-sm">Sub Area</label>
+                                        <input ng-model="address.sub_area" type="text" id="sub-area"
+                                            class=" input-sm form-control-sm form-control"></div>
+                                </div>
+
+                            </div>
+
+                            <div class="row form-group">
+
+                                <!-- Area -->
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label for="road" class=" form-control-label label-sm">Area</label>
+
+                                        <input ng-model="address.area" type="text" id="area"
+                                            class=" input-sm form-control-sm form-control" required>
+                                    </div>
+                                </div>
+
+                                <!-- City -->
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label for="road" class=" form-control-label label-sm">City</label>
+
+                                        <input ng-model="address.city" type="text" id="city"
+                                            class=" input-sm form-control-sm form-control" required>
+                                    </div>
+                                </div>
+
+                                <!-- Post Code -->
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label for="road" class=" form-control-label label-sm">Post Code</label>
+
+                                        <input ng-model="address.postCode" type="text" id="post"
+                                            class=" input-sm form-control-sm form-control" required>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row form-group">
+
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label for="contact-name" class=" form-control-label label-sm">Contact
+                                            Person</label>
+                                        <input ng-model="address.contact_person_name" type="text" id="contact-name"
+                                            class=" input-sm form-control-sm form-control"></div>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label for="contact-number" class=" form-control-label label-sm">Contact
+                                            Number</label>
+                                        <input ng-model="address.contact_person_phone" type="tel" id="contact-number"
+                                            class=" input-sm form-control-sm form-control"></div>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label for="contact-email" class=" form-control-label label-sm">Contact
+                                            Email</label>
+                                        <input ng-model="address.email" type="email" id="contact-email"
+                                            class=" input-sm form-control-sm form-control"></div>
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="row form-group">
+
+                                <div class="col-6">
+                                    <label class="label-sm">P-Type</label>
+                                    <multiselect ng-model="address.category" options="categories" display-prop="type"
+                                        id-prop="id" show-unselect-all="true" class="brfmultiselect" show-search="true"
+                                        change="selected()" classes-btn="'btn-sm btn btn-block btn-outline-secondary'">
+                                    </multiselect>
+                                    <div class="card border border-secondary  my-2" ng-if="pType">
+                                        <div class="pl-1 pr-2">
+                                            <div class=" mb-0 label-sm">
+                                                {{pType}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-6">
+                                    <label class="label-sm">Sub-Type</label>
+                                    <multiselect ng-model="address.subcategory" options="subcategories"
+                                        display-prop="subtype" class="brfmultiselect" id-prop="id"
+                                        show-unselect-all="true" show-search="true"
+                                        classes-btn="'btn-sm btn btn-block btn-outline-secondary'" change="selected()">
+                                    </multiselect>
+                                    <div class="card border border-secondary  my-2" ng-if="subType">
+                                        <div class="pl-1 pr-2">
+                                            <div class=" mb-0 label-sm">
+                                                {{subType}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="row form-group">
+                                <div class="col-md-12 col-sm-12 ">
+                                    <div class="taglist">
+                                        <span class="label label-light tags-badge"
+                                            ng-repeat="x in tagsArray track by $index" ng-click="removeTags($index)">
+                                            {{x}} &nbsp &nbsp;
+                                            <i class='fa fa-times'style="cursor: pointer;"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row form-group">
+                                <div class="col-lg-6">
+                                    <div class="form-group label-floating"
+                                        ng-class="{ 'has-error' : placeForm.tags.$invalid && !placeForm.tags.$pristine}">
+                                        <tag-input taglist="listone"></tag-input>
+                                    </div>
+                                </div>
+                                <div class="col-md-6"
+                                    ng-class="{ 'has-error' : placeForm.bike_image_link.$invalid && !placeForm.bike_image_link.$pristine}">
+                                    <!-- <label class="control-label">Place Photo</label> -->
+                                    <input class="form-control-file form-control-sm input-sm" type="file"
+                                        ng-model="imageSrc" valid-file accept="image/*" image="imageSrc"
+                                        resize-max-height="800" resize-max-width="800" resize-quality="0.7"
+                                        resize-type="image/jpg" ng-image-compress>
+                                    <img class="img-preview" ng-src="{{imageSrc.compressed.dataURL}}" />
+                                </div>
+                            </div>
+
+                            <div class="form-actions form-group">
+                                <button type="submit" class="btn btn-sm btn-success ">
+                                    <i class="fa fa-save"></i>&nbsp Update Place
+                                </button>
+                            </div>
+                        </div>
+                        <!-- <div class="card-footer">
+                            
+                            <button type="submit" class="btn btn-success btn-lg">
+                                    <i class="fa fa-plus-circle"></i> Vault Plae
+                                </button>
+                            <button type="reset" class="btn btn-danger btn-sm">
+                                <i class="fa fa-ban"></i> Reset
+                            </button>
+
+
+                        </div> -->
+                    </form>
+                </div>
+                <!-- /# card -->
+            </div>
+            <!-- /# column -->
+
+        </div>
+        <div class="modal-footer">
+    <button class="btn btn-md btn-danger mt-2" type="submit" ng-click="ok()">Cancel</button>
+
+   </div>
+        <!-- /# row -->
+
+
+
+
+    </div><!-- .animated -->
+</div><!-- .content -->
+<div class="clearfix"></div>

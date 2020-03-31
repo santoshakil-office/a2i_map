@@ -1,0 +1,37 @@
+ <div class="animated">
+                                <div class="modal-header">
+                                    <h3 class="modal-title">Zone Polygone</h3>
+                                </div>
+                              <div class="modal-body">
+                                <form class="form" ng-submit="create_zone_polygon(city_corp, zone_number)">
+                                  
+                                  <div class="col-md-12">
+                                    <label class="label">City Corporation: </label>
+                                      <select ng-model="city_corp"  name="city_corp"  ng-options="opt.cc_name for opt in city_corps" class="form-control" ng-change="set_citycorp(city_corp)">
+                                      </select>
+                                </div> 
+
+                               
+                                <div class="col-md-12">
+                                    <label class="label">Zone Number </label>
+                                     <input type="text" placeholder="Zone number" class="form-control" ng-model="zone_number"/>
+                                </div> 
+
+                               
+                                 <div class="col-md-12">
+                                   <button class="btn btn-md btn-success mt-2" type="submit">Create Polygon</button>
+                                </div>  
+
+                
+                                  
+                                </form>
+                              </div>
+    
+
+
+                                <div class="modal-footer">
+                                   
+    <button class="btn btn-md btn-danger mt-2" type="submit" ng-click="ok()">Cancel</button>
+
+                                </div>
+                        </div>

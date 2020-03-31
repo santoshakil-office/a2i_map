@@ -1,0 +1,165 @@
+<div class="content map-content map-content">
+    <div class="animated fadeIn">
+    </div>
+    <div class="row">
+        <div ng-class="{'col-md-9': columnLeftEight,  'col-md-12': columnLeftFull}">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h4>A2I-Logitics</h4>
+                            <!-- <i class="fa fa-columns pull-right" ng-click="mapperPolygonSearchCollapse()"></i> -->
+                        </div>
+                        <div class="col-md-3">
+                            <select class="form-control" name="singleSelect" ng-model="support_item" ng-change="select_support_item()" style="height: calc(2.25rem - 5px) !importent;">
+                                <option value="">--Find Providers--</option>
+                                <option value="0">Mask</option>
+                                <option value="1">Hand Gloves/ Sanitizer</option>
+                                <option value="2">PPE</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <button class="btn-info btn-sm">Get Connected</button>
+                        </div>
+
+                        <div class="col-md-3">
+                            <i class="fa fa-columns pull-right" ng-click="updateColumnSize()"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="gmap_unix card-body" bs-loading-overlay bs-loading-overlay-reference-id="first">
+                    <leaflet class="map   map-view" center="center" markers="markers" layers="layers" event-broadcast="events" geojson="geojson">
+                </div>
+            </div>
+            <!-- /# card -->
+        </div>
+        <!-- /# column -->
+        <div ng-class="{'col-md-3': columnRight, 'hide-div':columnLeftFull, 'show-div':columnLeftEight }">
+            <div class="card">
+                <!-- bs-loading-overlay bs-loading-overlay-reference-id="first" -->
+                <div class="card-body card-block">
+                    <div class="input-group-addon"><i class="fa fa-tag">See Who Delivers Where</i></div>
+                    <select class="form-control" name="singleSelect" ng-model="admin_level" ng-change="select_admin_level()">
+                        <option value="0">All Division</option>
+                        <!-- <option value="1">Districts</option> -->
+                        <option value="2">Only Dhaka</option>
+                    </select>
+                    <!-- 
+                <div class="form-group">
+                  <label for="area" class=" form-control-label label-sm">Select Thana</label>
+      
+                  <div class="input-group">
+                    <select ng-model="thana" name="area" ng-options="opt.thana for opt in thanas"
+                     ng-change="set_thana(thana)" class="form-control form-control-sm ">
+                      <option value="" selected></option>
+                    </select>
+      
+                  </div>
+                </div> -->
+                </div>
+                <div class="polygon-search-overflow" ng-if="geojson_district">
+                    <div ng-repeat="nb in district_wise_data| filter: query " pagination-id="psearchold">
+                        <!-- <div id="elm{{nb.id}}" ng-click="changeCenter(nb)"> -->
+                        <div class="card" ng-click="changeCenter(nb)">
+                           <!--  <div class="card-header">
+                                <small><span class="badge badge-info float-left mt-1">{{nb.company_type}}</span></small> -->
+                                <!--  &nbsp
+                                                <small><span
+                                                        class="badge badge-info float-left mt-1">{{nb.subtype}}</span>
+                                                </small>
+                                                <small class="float-right"><i class="ti-user"></i>
+                                                    <span>{{nb.userID}}</span></small> -->
+                            <!-- </div> -->
+                            <div class="card-body" style="padding: 10px 0 0 10px;">
+                                <div class="mx-auto d-block">
+                                    <div class="mt-1 ng-binding">
+                                        <i class="ti-home"></i> <span class="ng-binding">{{nb.company_title}}</span><br>
+                                        <!-- <i class="ti-direction"></i> <span class="ng-binding">Area:
+                                            {{nb.contact_no}}</span><br>
+                                        <i class="ti-calendar"></i> <span class="ng-binding">Date:
+                                            </label>{{nb.email}}</span><br>
+                                        <br> -->
+                                        <!-- <i class="ti-info"></i> <span>{{userinfo.created_at}}</span><br> -->
+                                        </address>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="polygon-search-overflow" ng-if="geojson_division">
+                    <div ng-repeat="nb in division_logistics_data.company_data| filter: query " pagination-id="psearchold">
+                        <!-- <div id="elm{{nb.id}}" ng-click="changeCenter(nb)"> -->
+                        <div class="card" ng-click="changeCenter(nb)">
+                            <!-- <div class="card-header">
+                                <small><span class="badge badge-info float-left mt-1">{{nb.company_type}}</span></small> -->
+                                <!--  &nbsp
+                                                <small><span
+                                                        class="badge badge-info float-left mt-1">{{nb.subtype}}</span>
+                                                </small>
+                                                <small class="float-right"><i class="ti-user"></i>
+                                                    <span>{{nb.userID}}</span></small> -->
+                           <!--  </div> -->
+                            <div class="card-body" style="padding: 10px 0 0 10px;">
+                                <div class="mx-auto d-block">
+                                    <div class="mt-1 ng-binding">
+                                        <i class="ti-home"></i> <span class="ng-binding">{{nb.company_title}}</span><br>
+                                        <!-- <i class="ti-direction"></i> <span class="ng-binding">Area:
+                                            {{nb.contact_no}}</span><br>
+                                        <i class="ti-calendar"></i> <span class="ng-binding">Date:
+                                            </label>{{nb.email}}</span><br>
+                                        <br> -->
+                                        <!-- <i class="ti-info"></i> <span>{{userinfo.created_at}}</span><br> -->
+                                        </address>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="polygon-search-overflow" ng-if="geojson_dhaka">
+                    <div ng-repeat="nb in dhaka_logistics_data.company_data| filter: query " pagination-id="psearchold">
+                        <!-- <div id="elm{{nb.id}}" ng-click="changeCenter(nb)"> -->
+                        <div class="card" ng-click="changeCenter(nb)">
+                            <!-- <div class="card-header">
+                                <small><span class="badge badge-info float-left mt-1">{{nb.company_type}}</span></small> -->
+                                <!--  &nbsp
+                                                <small><span
+                                                        class="badge badge-info float-left mt-1">{{nb.subtype}}</span>
+                                                </small>
+                                                <small class="float-right"><i class="ti-user"></i>
+                                                    <span>{{nb.userID}}</span></small> -->
+                           <!--  </div> -->
+                            <div class="card-body" style="padding: 10px 0 0 10px;">
+                                <div class="mx-auto d-block">
+                                    <div class="mt-1 ng-binding">
+                                        <i class="ti-home"></i> <span class="ng-binding">{{nb.company_title}}</span><br>
+                                        <!-- <i class="ti-direction"></i> <span class="ng-binding">Area:
+                                            {{nb.contact_no}}</span><br>
+                                        <i class="ti-calendar"></i> <span class="ng-binding">Date:
+                                            </label>{{nb.email}}</span><br>
+                                        <br> -->
+                                        <!-- <i class="ti-info"></i> <span>{{userinfo.created_at}}</span><br> -->
+                                        </address>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                                          <div style="text-align: justify; bottom: 4em;  position: absolute; padding: .3em;margin-left: 2em"><small>Powerd By </small>
+                                <img src="/assets/img/bkoilogo.png" style="width: 10em; height: 3.4em">
+                            </div>
+            </div>
+        </div>
+        <!-- /# card -->
+    </div>
+    <!-- /# column -->
+</div>
+<!-- /# row -->
+</div><!-- .animated -->
+</div><!-- .content -->
+<div class="clearfix"></div>

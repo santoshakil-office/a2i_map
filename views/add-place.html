@@ -1,0 +1,102 @@
+ <div class="content">
+
+      <div class="header header-filter">
+            <div class="container-fluid">
+                <div class="card well well-lg bs-loading-container"  bs-loading-overlay bs-loading-overlay-reference-id="first">
+                    <div class="row">
+                       <div class="col-md-6" >
+                           <!--  <map zoom="15" style="height: 450px">
+                                <marker ng-repeat="pos in positions" position="{{currentlat}}, {{currentlng}}" id="{{pos.index}}" on-dragend="pin_mooved(this)" draggable="true">
+                            </map> -->
+                           <div class="row">
+                              <form>
+                            <label>Upload CSV file Or</label>
+                              <input type="file" file-reader="fileContent"/>
+                               <button class="btn btn-info btn-sm" ng-click="showOverlay('first')">Upload CSV</button>                       
+                              </form>
+                            </div>
+                            <div class="row">
+                            <leaflet center="center" event-broadcast="events" markers="markers" height="380px" width="100%" ></leaflet>
+                            </div>
+                              <!--  <input  class="form-control" places-auto-complete size=80 component-restrictions="{country:'bd'}"
+                                 ng-model="location" on-place-changed="getdirection()" style="    float: right;
+    width: 30%;
+    z-index: 65;
+    position: absolute;
+    background: white"/> -->
+                
+                       </div>
+                      
+                         <div class="jumbotron col-md-5"></div>
+                         <div class="row">
+                           <Legend>Add Place</Legend>
+                           <form ng-submit="add_place()">
+                                  <div class="form-group">
+                                   <label>Navigate Place: </label>
+                                     <input  class="form-control" places-auto-complete size=80 component-restrictions="{country:'bd'}"
+                                 ng-model="location" on-place-changed="getdirection()"/>
+                                  </div>
+                                   <div class="form-group">
+                                    <label>City: </label>
+                                    <input type="text" ng-model="address.city" name="city" class="form-control"  placeholder="City">
+                                  </div>
+                                  <div class="form-group">
+                                   <label>Area: </label>
+                                    <input type="text" ng-model="address.area"  name="area" class="form-control"  placeholder="Area Name">
+                                  </div>
+                                  <div class="form-group">
+                                   <label>Address: </label>
+                                    <input type="text" ng-model="address.address" name="address" class="form-control" placeholder="Flat-3, House-18, Street-5, Section-2">
+                                  </div>
+                                  <div class="form-group">
+                                     <label>Post-Code: </label>
+                                    <input type="text" ng-model="address.postCode" name="postal" class="form-control"  placeholder="Postal Code">
+                                  </div>
+                                   <div class="form-group">
+                                     <label>Location Name(If any): </label>
+                                    <input type="text" ng-model="address.name"  name="name" class="form-control"  placeholder="Give a Name to Your Address">
+                                  </div>
+                                  <!-- ai khane problem thakte pare -->
+                                   <div class="form-group">
+                                    <label>Type: </label>
+                                     <select class="form-control" name="address.category" ng-model="address.category"  ng-init="address.category = categories[0]" ng-options="cat.type for cat in categories"  ng-change="getSubCategory()" >
+                                     </select>
+                                  </div>
+                                  <!--  <div class="form-group">
+                                     <label>SubType: </label>
+                                     <select class="form-control" ng-model="address.subcategory"  name="subcategory" ng-if="address.category" ng-options="subcat.subtype for subcat in subcategories" ng-change="set_subtype(address.subcategory)">
+                                     </select>
+                                  </div> -->
+                                  <!-- ai tukur moddhe ng model name a problem ase -->
+
+                                   <div class="form-group">
+                                     
+                                     <ul class="nav navbar-nav">
+                                      <li>
+                                        <div so-multiselect items="subcategories" name="SubType" on-selected="onSubTypeSelect(selectedItems)" button-class="btn-grey"></div>
+                                      </li>
+                                  </ul>
+                                  </div>
+
+                                  <div class="form-group">
+                              
+                                   <ul class="nav navbar-nav">
+                                  
+                                      <li>
+                                        <div so-multiselect items="roadtypes" name="Road Type" on-selected="onRoadSelect(selectedItems)" button-class="btn-grey"></div>
+                                      </li>
+                                  </ul>
+                                  </div>
+
+                                  <button type="submit" class="btn btn-denger">Add Place</button>
+                            </form>
+                          </div>
+                       </div>
+                       <br>
+                    </div>
+
+                </div>
+            </div>
+          </div>
+     
+    </div>

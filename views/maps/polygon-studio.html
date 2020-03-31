@@ -1,0 +1,84 @@
+<div class="content map-content">
+    <div class="animated fadeIn">
+
+        <div class="row">
+            <div ng-class="{'col-md-7': polygonStudioLeftEight,  'col-md-12': polygonStudioLeftFull}">
+                <div class="card">
+                    <div class="card-header">
+
+                        <div class="row">
+                            <div class="col-md-10">
+                                <h4>Polygon Studio</h4>
+                            </div>
+                            <div class="col-md-2">
+                                <i class="fa fa-columns pull-right" ng-click="polygonStudioCollapse()"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gmap_unix card-body" bs-loading-overlay bs-loading-overlay-reference-id="first">
+                        <leaflet class="map-view map" center="center" controls="controls" layers="layers" width='100%'>
+
+                        </leaflet>
+                    </div>
+                </div>
+                <!-- /# card -->
+            </div>
+            <!-- /# column -->
+            <div
+                ng-class="{'col-md-5': polygonStudioRight, 'hide-div':polygonStudioLeftFull, 'show-div':polygonStudioLeftEight }">
+                <div class="card">
+                    <div class="card-header">
+                        <strong>Upload GPX</strong>
+                    </div>
+                    <!-- bs-loading-overlay bs-loading-overlay-reference-id="first" -->
+                    <div class="card-body card-block">
+
+                        <div class="row form-group">
+                            <div class="col-12 col-md-9">
+                                <label for="file-input" class=" form-control-label">File input</label>
+                                <input type="file" id="file" name="file" multiple
+                                    onchange="angular.element(this).scope().getFileDetails(this)"
+                                    accept=".gpx, application/gpx+xml" />
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- <div class="map-input-panal">
+                                            <form class="inline">
+                                           <input type="file" id="file" name="file" multiple
+                                      onchange="angular.element(this).scope().getFileDetails(this)" accept=".gpx, application/gpx+xml"/>
+                          
+                                  <input class="btn" style="padding: .2em;" type="button" ng-click="uploadFiles()" value="Upload" />
+                          
+                          
+                                            </form>
+                                           
+                                           <br>
+                                  <p><progress id="pro" value="0"></progress></p>
+                                        </div> -->
+
+                    </div>
+
+                    <div class="card-footer">
+                        <button class="btn btn-sm btn-info" type="button" ng-click="uploadFiles()" value="Upload">
+                            <i class="ti-upload"></i> &nbsp
+                            Upload </button>
+
+                    </div>
+                </div>
+                <!-- /# card -->
+            </div>
+            <!-- /# column -->
+
+        </div>
+        <!-- /# row -->
+
+
+
+
+    </div><!-- .animated -->
+</div><!-- .content -->
+<div class="clearfix"></div>

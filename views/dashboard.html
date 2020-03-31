@@ -1,0 +1,355 @@
+
+<div class="content" ng-controller="DashController">
+    <!-- Animated -->
+    <div class="animated fadeIn">
+        <!-- Widgets  -->
+        <div class="row">
+            <div class="col-lg-4 col-md-6">
+                <div class="card">
+                        <div class="card-header">
+                                Today
+                                <span class="badge badge-dark pull-right">Places API</span>
+                            </div>
+                    <div class="card-body">
+                                    <canvas ng-if="todaysUsage" id="bar" class="chart chart-bar" chart-data="todaysUsage"
+                            chart-labels="api" chart-series="dailyseries" chart-options="barChartOptions">
+                        </canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        This Week
+                        <span class="badge badge-dark pull-right">Places API</span>
+                    </div>
+                    <div class="card-body">
+                                    <canvas ng-if="thisWeeksUsage" id="bar" class="chart chart-bar"  chart-data="thisWeeksUsage"
+                                    chart-labels="api" chart-series="dailyseries" chart-options="barChartOptions">
+                                </canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="card">
+                        <div class="card-header">
+                                This Month
+                                <span class="badge badge-dark pull-right">Places API</span>
+                            </div>
+                    <div class="card-body">
+                        <div class="stat-widget-five">
+                                    <canvas ng-if="thisMonthsUsage" id="pie" class="chart chart-pie" chart-data="thisMonthsUsage" chart-labels="api"
+                                chart-legend="true" chart-options="pieChartOptions" >
+                            </canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- city corp api --> 
+        <div class="row">
+            <div class="col-lg-4 col-md-6">
+                <div class="card">
+                        <div class="card-header">
+                                Today 
+                                <span class="badge badge-dark pull-right">City Corp API</span>
+                            </div>
+                    <div class="card-body">
+                        <canvas ng-if="cityCorpUsageToday" id="bar" class="chart chart-bar" chart-data="cityCorpUsageToday"
+                            chart-labels="bkoiGovtApi" chart-series="dailyseries" chart-options="barChartOptions">
+                        </canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        This Week
+                        <span class="badge badge-dark pull-right">City Corp API</span>
+                    </div>
+                    <div class="card-body">
+                                    <canvas ng-if="cityCorpUsageThisWeek" id="bar" class="chart chart-bar"  chart-data="cityCorpUsageThisWeek"
+                                    chart-labels="bkoiGovtApi" chart-series="dailyseries" chart-options="barChartOptions">
+                                </canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="card">
+                        <div class="card-header">
+                                This Month
+                                <span class="badge badge-dark pull-right">City Corp API</span>
+                            </div>
+                    <div class="card-body">
+                        <div class="stat-widget-five">
+                                    <canvas ng-if="cityCorpUsageThisMonth" id="doughnut" class="chart chart-doughnut" chart-data="cityCorpUsageThisMonth" chart-labels="bkoiGovtApi"
+                                chart-legend="true" chart-options="doughnutChartOptions" >
+                            </canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Max User Graph -->
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <div class="card">
+                        <div class="card-header">
+                                Today
+                                <span class="badge badge-dark pull-right">Max Users</span>
+                            </div>
+                    <div class="card-body">
+                                    <canvas ng-if="max_user_today_score" id="bar" class="chart chart-bar" chart-data="max_user_today_score"
+                            chart-labels="max_user_today_label" chart-series="dailyseries" chart-options="barChartOptions">
+                        </canvas>
+                    </div>
+                </div>
+            </div> 
+
+            <div class="col-lg-6 col-md-6">
+                <div class="card">
+                        <div class="card-header">
+                                This Week
+                                <span class="badge badge-dark pull-right">Max Users</span>
+                            </div>
+                    <div class="card-body">
+                                    <canvas ng-if="max_user_week_score" id="bar" class="chart chart-bar" chart-data="max_user_week_score"
+                            chart-labels="max_user_week_label" chart-series="dailyseries" chart-options="barChartOptions">
+                        </canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="row">
+            <div class="col-sm-12 mb-4">
+                <div class="card daily-analytics-card mb-0">
+                    <div class="card-header">
+                       Daily API Analytics
+                    </div>
+                </div>
+                <div class="card-group analytics-card-group">
+                    <div class="card col-md-6 no-padding ">
+                        <div class="card-body text-center">
+
+                            <div class=" mb-0 ">
+                                <span class="stat-text">{{dailyAnalytics.Route ? dailyAnalytics.Route : 0}}</span>
+                            </div>
+
+                            <small class="text-muted text-muted-daily ">Route</small>
+                        </div>
+                    </div>
+                    <div class="card col-md-6 no-padding ">
+                        <div class="card-body text-center">
+                            <div class=" mb-0 ">
+                                <span class="stat-text">{{dailyAnalytics.Geocode ? dailyAnalytics.Geocode : 0 }}</span>
+                            </div>
+
+                            <small class="text-muted text-muted-daily ">Geocode</small>
+                        </div>
+                    </div>
+
+                    <div class="card col-md-6 no-padding ">
+                        <div class="card-body text-center">
+                            <div class=" mb-0">
+                                <span class="stat-text">{{dailyAnalytics.Nearby ? dailyAnalytics.Nearby : 0}}</span>
+                            </div>
+                            <small class="text-muted text-muted-daily ">Nearby</small>
+                        </div>
+                    </div>
+                    <div class="card col-md-6 no-padding ">
+                        <div class="card-body text-center">
+                            <div class=" mb-0">
+                                <span class="stat-text">{{dailyAnalytics.Distance ? dailyAnalytics.Distance : 0}}</span>
+                            </div>
+                            <small class="text-muted text-muted-daily">Distance</small>
+                        </div>
+                    </div>
+                    <div class="card col-md-6 no-padding ">
+                        <div class="card-body text-center">
+                            <div class=" mb-0">
+                                <span class="stat-text">{{dailyAnalytics["Reverse Geocode"] ? dailyAnalytics["Reverse Geocode"] : 0}}</span>
+                            </div>
+                            <small class="text-muted text-muted-daily">Reverse Geocode</small>
+                        </div>
+                    </div>
+                    <div class="card col-md-6 no-padding ">
+                        <div class="card-body text-center">
+                            <div class=" mb-0">
+                                <span class="stat-text ">{{dailyAnalytics["Nearby Categorized"] ? dailyAnalytics["Nearby Categorized"] : 0}}</span>
+                            </div>
+                            <small class="text-muted text-muted-daily">Nearby Categorized</small>
+                        </div>
+                    </div>
+
+                    <div class="card col-md-6 no-padding ">
+                        <div class="card-body text-center">
+                            <div class="mb-0">
+                                <span class="stat-text">{{dailyAnalytics["Total Hits"] ? dailyAnalytics["Total Hits"] : 0}}</span>
+                            </div>
+                            <small class="text-muted text-muted-daily">Total Hits</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+        <!-- <div class="row">
+            <div class="col-lg-3 col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="stat-widget-five">
+                            <div class="stat-icon dib flat-color-1">
+                                <i class="fa fa-search"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="text-left dib">
+                                    <div class="stat-text"><span class="">{{dailyAnalytics.Geocode}} </span>
+                                    </div>
+                                    <div class="stat-heading">Geocode</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="stat-widget-five">
+                            <div class="stat-icon dib flat-color-1">
+                                <i class="fa fa-search"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="text-left dib">
+                                    <div class="stat-text"><span class="">{{dailyAnalytics.Reverse_Geocode}} </span>
+                                    </div>
+                                    <div class="stat-heading">Total Search</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="stat-widget-five">
+                            <div class="stat-icon dib flat-color-1">
+                                <i class="fa fa-search"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="text-left dib">
+                                    <div class="stat-text"><span class="">{{dailyAnalytics.Nearby}} </span>
+                                    </div>
+                                    <div class="stat-heading">Total Search</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="stat-widget-five">
+                            <div class="stat-icon dib flat-color-1">
+                                <i class="fa fa-search"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="text-left dib">
+                                    <div class="stat-text"><span class="">{{dailyAnalytics.Distance}} </span>
+                                    </div>
+                                    <div class="stat-heading">Total Search</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <!-- /Widgets -->
+
+
+        <!-- <div class="row">
+            <div class="col-md-6 col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <select ng-model="area" name="area" ng-options="opt.name for opt in areas"
+                                    ng-change="set_area(area)" class="form-control form-control-sm ">
+                                    <option value="" selected>Select Area</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <select ng-model="subcategory" name="subcategory"
+                                    ng-options="subcat.subtype for subcat in subcategories"
+                                    ng-change="set_subType(area.name, subcategory.subtype)"
+                                    class="form-control form-control-sm ">
+                                    <option value="" selected>Select Sub Category</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+        <div class="row">
+            <!-- <div class="col-lg-6 col-sm-12 ng-scope" id="pie-chart">
+                <div class="card ">
+                    <div class="card-header">Pie Chart</div>
+                    <div class="card-body">
+                        <iframe class="chartjs-hidden-iframe" tabindex="-1" style="width: 100%; display: block; border: 0px; height: 0px; margin: 0px; 
+                      position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px;">
+                        </iframe>
+                        <canvas id="pie" class="chart chart-pie chart-xs ng-isolate-scope" chart-data="pieChartData"
+                            chart-labels="pieChartLabels" chart-options="options" width="523" height="261"
+                            style="display: block; width: 523px; height: 261px;">
+                        </canvas>
+                    </div>
+                </div>
+            </div> -->
+
+            <div class="col-lg-12 col-sm-12 ng-scope" id="bar-chart">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="col-12 col-md-12">
+                            <div id="search-from-form">
+                                <input type="text" name="hf-email" placeholder="Search"
+                                    typeahead-on-select='onSelect($item)'
+                                    typeahead="user.Address for user in users($viewValue)" ng-model="selecting"
+                                    ng-focus="focus=true;blur=false;" ng-blur="blur=true;focus=false;"
+                                    aria-autoc1omplete="list" class="form-control form-control-sm input-sm">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gmap_unix card-body">
+                        <leaflet center="center" defaults="defaults" event-broadcast="events" markers="markers"
+
+                            layers="layers" width='100%' height='500'>
+                        </leaflet>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- .animated -->
+</div>
+<!-- /.content

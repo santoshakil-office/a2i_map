@@ -1,0 +1,56 @@
+
+    <div class="content">
+        <div class="animated fadeIn">
+
+            <div class="row justify-content-center">
+
+                <div class="col-xs-8 col-sm-8">
+                        <div class="card">
+                                <div class="card-header">Add Category</div>
+                                <div class="card-body card-block">
+                                    <form class="" >
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-addon"><i class="fa fa-tag"></i></div>
+                                                <input type="text"   name="username" placeholder="Category" class="form-control" ng-model="new_category" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-actions form-group"><button ng-click="set_category()"  type="submit" class="btn btn-success btn-sm">Add Category</button></div>
+                                    </form>
+                                </div>
+                            </div>
+                </div>
+                <div class="col-xs-8 col-sm-8 ">
+                        <div class="card">
+                                <div class="card-header">Add Sub-Category</div>
+                                <div class="card-body card-block">
+                                    <form ng-submit="set_sub_category()" class="">
+                                        <div class="form-group">
+                                            <label>Category</label>
+                                            <select class="form-control"  data-style="btn-info" ng-model="address.category" 
+                                            ng-init="address.category = categories[0]"
+                                            ng-options="cat.type for cat in categories" required>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-addon"><i class="fa fa-tags"></i></div>
+                                                <input required type="text" name="subtype" class="form-control" placeholder="Sub Category" 
+                                                ng-model="address.subcategory">
+                                            </div>
+                                        </div>
+                                        <div class="form-actions form-group">
+                                            <button type="submit" class="btn btn-success btn-sm" ng-click="set_sub_category()">
+                                                Submit
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                </div>
+
+</div>
+
+
+</div><!-- .animated -->
+</div><!-- .content -->

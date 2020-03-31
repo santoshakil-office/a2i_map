@@ -1,0 +1,29 @@
+<div class="animated">
+  <div class="modal-header">
+    <h3 class="modal-title">SubArea Polygon</h3>
+  </div>
+  <div class="modal-body">
+    <form class="form" ng-submit="create_subarea_polygon(area, subarea)">
+
+      <div class="col-md-12">
+        <label class="label">Area: </label>
+        <select ng-model="area" name="area" ng-options="opt.area_name for opt in areas" class="form-control">
+        </select>
+      </div>
+
+
+      <div class="col-md-12">
+        <label class="label">Sub-Area Name: </label>
+        <input type="text" placeholder="subArea Name" class="form-control" ng-model="subarea" />
+      </div>
+
+      <div class="col-md-12">
+        <button class="btn btn-md btn-success mt-2" type="submit">Create Polygon</button>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-md btn-danger mt-2" type="submit" ng-click="ok()">Cancel</button>
+
+  </div>
+</div>

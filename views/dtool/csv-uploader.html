@@ -1,0 +1,69 @@
+
+
+
+<div class="content">
+    <div class="animated fadeIn">
+
+        <div class="row">
+            <!-- /# column -->
+            <div class="col-md-8 offset-md-2">
+                <div class="card">
+                    <div class="card-header"><strong>Upload CSV Data</strong></div>
+
+                    <!-- bs-loading-overlay bs-loading-overlay-reference-id="first" -->
+                    <div class="card-body card-block" bs-loading-overlay bs-loading-overlay-reference-id="first">
+                        <form ng-submit="uploadCsv('first')" ng-hide="resetUpload">
+                                <div class="row form-group">
+                                        <div class="col col-md-2"><label for="file-input" class=" form-control-label">File input</label></div>
+                                        <div class="col-12 col-md-10"><input type="file" id="file-input" file-reader="fileContent" name="file-input" class="form-control-file" required></div>
+                                    </div>
+                            <div class="row form-group">
+
+                                        <div class="col-md-12">
+                                                <button class="btn btn-success btn-sm" type="submit">Upload CSV</button>
+                                        </div>
+                            </div>
+                        </form>
+
+                        <div ng-show="resetUpload">
+                            <div class="col-md-12">
+                                <h3 class="mb-2">Upload Completed!</h3>
+
+                                <button class="btn btn-success btn-sm" ng-click="init()">Upload Again</button>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /# card -->
+            </div>
+
+            <div class="col-md-8 offset-md-2" ng-show="showLog">
+                <div class="card" >
+                    <div class="card-header">
+                        Log
+                    </div>
+
+                    <div class="card-body" style="max-height: 250px; overflow-y: auto;">
+                        <ul class="list-group list-group-flush log-listnew" ng-repeat="data in newAddressLog track by $index">
+                            <li class="list-group-item" >{{data}} 
+                                <a href="#" class="badge badge-dark pull-right">Added</a>
+                            </li>
+
+                          </ul>
+                    </div>
+                    
+                    <div class="card-footer" ng-if="resetUpload">
+                        Total Address added: {{newAddressLog.length}}
+                    </div>
+                </div>
+            </div>
+            <!-- /# column -->
+
+        </div>
+        <!-- /# row -->
+
+
+
+
+    </div><!-- .animated -->
+</div><!-- .content -->

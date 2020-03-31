@@ -1,0 +1,23 @@
+<div class="dropdown">
+  <a class="btn" ng-click="toggleSelect()" ng-disabled="disabled" ng-class="{'error': !valid()}">
+    <span class="pull-left">{{header}}</span>
+    <span class="caret updown-icon"></span>
+  </a>
+  <ul class="dropdown-menu" name="ms" style="overflow-y: scroll; height: 70vh; padding-left: 10px; padding-top: 20px;">
+    <li>
+      <input class="from-control" type="text" ng-model="searchText.label" autofocus="autofocus" placeholder="Filter" />
+    </li>
+    <li ng-show="multiple">
+      <a class="btn-danger btn-small" ng-click="uncheckAll()"><i class="material-icons">clear</i> Uncheck all</a>
+    </li>
+    <li ng-repeat="i in items | filter:searchText">
+      <a ng-click="select(i)">
+        <i class="material-icons" ng-if="i.checked">done</i> <i class="material-icons" ng-if="!i.checked">clear</i>{{i.label}}</a>
+    </li>
+    <!-- <li ng-repeat="i in items | filter:searchText">
+        <input type="checkbox" ng-change="select(i)" ng-model="subarea.selected" style="width: 40px;"><i class="material-icons" ng-if="i.checked">done</i> <i class="material-icons" ng-if="!i.checked">clear</i>{{i.label}}
+      <!-- <a ng-click="select(i); focus()">
+        <i class="material-icons" ng-if="i.checked">done</i> <i class="material-icons" ng-if="!i.checked">clear</i>{{i.label}}</a> -->
+    </li> 
+  </ul>
+</div>

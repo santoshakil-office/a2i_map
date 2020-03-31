@@ -1,0 +1,107 @@
+<style>
+    input {
+        width: 120px;
+        margin-right: 10px;
+    }
+
+    .worldmap {
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 5px;
+    }
+
+
+    div.worldmap.country {
+        font-size: 2em;
+        font-weight: bold;
+        position: absolute;
+        bottom: 1em;
+        left: 1em;
+        z-index: 100;
+        padding: .2em .5em;
+        line-height: 1.1em;
+        text-align: center;
+    }
+</style>
+
+<div class="content map-content map-content">
+    <div class="animated fadeIn">
+    </div>
+
+    <div class="row">
+        <div 
+        ng-class="{'col-md-8': columnLeftEight,  'col-md-12': columnLeftFull}">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h4>Local Admin Road</h4>
+                            <!-- <i class="fa fa-columns pull-right" ng-click="mapperPolygonSearchCollapse()"></i> -->
+                        </div>
+                        <div class="col-md-4">
+                            <i class="fa fa-columns pull-right" ng-click="updateColumnSize()"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="gmap_unix card-body" bs-loading-overlay bs-loading-overlay-reference-id="first">
+                    <leaflet class="map map-view" center="center" controls="controls" geojson="geojson" layers="layers"
+                    event-broadcast="events">
+                    <div class="worldmap country f32">
+                        <div ng-show="selectedRoad" class="flag"></div>
+                        {{ selectedRoad || 'No Name'}}
+                    </div>
+            
+                </leaflet>
+                </div>
+            </div>
+            <!-- /# card -->
+        </div>
+        <!-- /# column -->
+        <div 
+        ng-class="{'col-md-4': columnRight, 'hide-div':columnLeftFull, 'show-div':columnLeftEight }">
+            <div class="card">
+
+                <!-- bs-loading-overlay bs-loading-overlay-reference-id="first" -->
+                
+                <div class="card-body card-block">
+
+                    <div class="tab-content mt-3" id="myTabContent">
+
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <select ng-model="area" name="area" ng-options="opt.area_name for opt in areas"
+                                    ng-change="set_area(area)" class="form-control form-control-sm ">
+                                        <option value="" selected>Area</option>
+                                    </select>
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <select ng-model="road" name="road" ng-options="opt.road_name_number for opt in roads" 
+                                    ng-change="set_road(road)" class="form-control form-control-sm ">
+                                        <option value="" selected>Road</option>
+                                    </select>
+                                </div>
+
+                            </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+            <!-- /# card -->
+        </div>
+        <!-- /# column -->
+
+    </div>
+    <!-- /# row -->
+
+
+
+
+</div><!-- .animated -->
+</div><!-- .content -->
+<div class="clearfix"></div>

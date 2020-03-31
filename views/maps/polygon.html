@@ -1,0 +1,145 @@
+<div class="content map-content">
+    <div class="animated fadeIn">
+
+        <div class="row">
+            <div ng-class="{'col-md-8': polygonAreaLeftEight,  'col-md-12': polygonAreaLeftFull}">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h4>Polygon Area</h4>
+                            </div>
+                            <div class="col-md-4">
+                                <i class="fa fa-columns pull-right" ng-click="polygonAreaCollapse()"
+                                    data-toggle="tooltip" title="Expand or Collapse"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gmap_unix card-body">
+                        <leaflet class="map map-view" center="center" markers="markers" layers="layers"
+                            event-broadcast="events" geojson="geojson" width='100%' >
+
+                    </div>
+                </div>
+                <!-- /# card -->
+            </div>
+            <!-- /# column -->
+            <div
+                ng-class="{'col-md-4': polygonAreaRight, 'hide-div':polygonAreaLeftFull, 'show-div':polygonAreaLeftEight }">
+                <div class="card">
+                    <!-- bs-loading-overlay bs-loading-overlay-reference-id="first" -->
+                    <div class="card-body card-block">
+                        <div class="custom-tab">
+
+                            <!-- <ul class="nav nav-tabs" id="pills-tab" role="tablist">
+                                                <li class="nav-item">
+                                                    <a class="nav-link active show" id="pills-home-tab" data-toggle="tab" href="/polygon#areafilter" role="tab" aria-controls="pills-home" aria-selected="true">Home</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link show" id="pills-profile-tab" data-toggle="pill" href="/polygon#arearesults" role="tab" aria-controls="pills-profile" aria-selected="false">Results</a>
+                                                </li>
+                                            </ul> -->
+
+                            <ul class="nav nav-tabs mb-3" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active show" id="home-tab" data-toggle="tab"
+                                        href="/polygon#areafilter" role="tab" aria-controls="home"
+                                        aria-selected="true">Filter</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="/polygon#arearesults"
+                                        role="tab" aria-controls="profile" aria-selected="false">Results</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="pills-tabContent">
+                                <div class="tab-pane fade active show" id="areafilter" role="tabpanel"
+                                    aria-labelledby="pills-home-tab">
+                                    <label for="">Area</label>
+                                    <span>
+                                        <select ng-model="area" name="area" ng-options="opt.name for opt in areas"
+                                            ng-change="set_area(area)" class="form-control form-control-sm input-sm">
+                                        </select>
+                                    </span>
+
+                                    <div class="area-polygon-multiselect" id="selectmultiselect">
+                                        <label for="">Sub-area: </label>
+
+                                        <ul so-multiselect items="subcategories" name="Subcategory"
+                                            on-selected="set_subType(selectedItems)" class="btn-white btn-md btn"></ul>
+
+                                        <!-- <label for="selectmultiselect">Select SubCategory</label> -->
+                                        <!-- <multiselect ng-model="selectedsubtype" options="subcategories" display-prop="name"  id-prop="key"  show-unselect-all="true" show-search="true" change="set_subType(selectedsubtype.name)">
+                                                                </multiselect> -->
+                                    </div>
+
+                                    <div class="card mt-3">
+
+                                        <div class="card-content">
+                                            <canvas id="base" class="chart-horizontal-bar" chart-data="data"
+                                                chart-labels="labels">
+                                            </canvas>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="tab-pane fade show" id="arearesults" role="tabpanel"
+                                    aria-labelledby="pills-profile-tab">
+
+                                    <div class="row mb-2">
+                                        <div class="col-md-12">
+                                            <input type="text" ng-model="query"
+                                                class="form-control form-control-sm input-sm" placeholder="Search">
+                                        </div>
+                                    </div>
+
+                                    <div class="area-repeat" style="max-height: 410px; overflow-y: auto;">
+                                        <div ng-repeat="nb in markers| filter: query "
+                                            ng-mouseover="nb.icon.iconSize=[28, 38]; nb.focus=false;"
+                                            ng-mouseleave="nb.icon.iconSize=[25, 35]; nb.focus=false;">
+                                            <!-- <div id="elm{{nb.id}}" ng-click="changeCenter(nb)"> -->
+                                            <div class="card" ng-click="changeCenter(nb)">
+
+                                                <div class="card-body" style="padding: 10px 0 0 10px;">
+                                                    <div class="my-1 ng-binding">
+                                                        <i class="ti-home"></i> <span
+                                                            class="ng-binding">{{nb.Address}}</span><br>
+                                                        <i class="ti-direction"></i> <span
+                                                            class="ng-binding">{{nb.area}}</span><br>
+
+                                                    </div>
+
+                                                    <small>
+                                                        <span
+                                                            class="badge badge-info float-left mt-1 mr-1">{{nb.ptype}}</span>
+                                                    </small>
+                                                    &nbsp
+                                                    <small>
+                                                        <span
+                                                            class="badge badge-info float-left mt-1">{{nb.subtype}}</span>
+                                                    </small>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- /# card -->
+            </div>
+            <!-- /# column -->
+
+        </div>
+        <!-- /# row -->
+
+
+
+
+    </div><!-- .animated -->
+</div><!-- .content -->
+<div class="clearfix"></div>

@@ -1,0 +1,594 @@
+body {
+   font-size: 14px !important;
+}
+
+p {
+   font-size: 13px !important;
+}
+
+a {
+   font-size: 13px !important;
+}
+
+/* Custom CSS for this app */
+
+#header {
+   z-index: 1001;
+}
+
+
+/* Modal modify for bootstrap 4 */
+
+.modal.fade.in {
+   opacity: 1;
+}
+
+.modal.fade .modal-dialog {
+   transform: translate(0, 0) !important;
+}
+
+.modal-backdrop.fade {
+   opacity: 0.5 !important;
+}
+
+.modal-header {
+   display: block;
+}
+
+.modal-content {
+   border-radius: 1.3rem !important;
+}
+
+.modal-dialog {
+   max-width: 900px !important;
+}
+
+/* area polygon multiselect */
+
+.area-polygon-multiselect ul {
+   /* width: 245px ; */
+   margin-left: 20px;
+}
+
+.hide-div {
+   display: none;
+}
+
+.show-sidebar-list {
+   display: inline-block;
+}
+
+/* .lol {
+   background: pink;
+} */
+
+.show-div {
+   display: block;
+}
+
+.area-polygon-multiselect ul li {
+   width: 190px !important;
+   margin-left: 0px !important;
+   margin-bottom: 10px !important;
+   padding-bottom: 2px !important;
+   padding-top: 3px !important;
+   margin-top: -10px !important;
+   border-radius: 1px !important;
+   max-height: 20.4em !important;
+   font-size: .8em;
+
+}
+
+.area-polygon-multiselect ul {
+   border: 1px solid #3588e2 !important;
+   height: 20.4em !important;
+   max-width: 192px !important;
+   margin-left: 47px !important;
+   margin-top: 0px !important;
+   overflow-x: hidden !important;
+   border-radius: 1px !important;
+}
+
+.area-polygon-multiselect ul li:hover,
+.area-polygon-multiselect ul li:focus {
+   background: #3588e2 !important;
+   color: white;
+}
+
+.area-polygon-multiselect .multiselect-container .multiselect-menu li input {
+   margin-right: .5em;
+   margin-left: 1em;
+}
+
+.area-polygon-dropdown .btn {
+   padding: 12px 0 !important;
+   /* max-width: 175px;  */
+   margin-left: 3em;
+}
+
+#area-polygon-search {
+   margin: 1em auto;
+   border: 1px solid #dedede;
+   background: white;
+   padding: 8px;
+   display: block;
+
+   box-shadow: 0 14px 26px -12px rgba(255, 255, 255, 0.42), 0 4px 23px 0px rgba(77, 77, 77, 0.12), 0 8px 10px -5px rgba(213, 213, 213, 0.2);
+   font-weight: 500;
+}
+
+.area-polygon-multiselect .multiselect-container button {
+   padding: 12px 19px !important;
+   width: 192px;
+   margin-left: .8em;
+}
+
+/* end area polygon multiselect */
+
+/* limit hight and add over flow right column */
+.right-column-list-overflow {
+   max-height: 72vh;
+   overflow-y: auto;
+}
+
+.polygon-search-overflow {
+   max-height: 71vh;
+   overflow-y: auto;
+}
+
+.vault-overflow {
+   max-height: 77vh;
+   overflow-y: auto;
+}
+
+/* end list overflow */
+
+/* qr code */
+#qrcode img {
+   margin: 0 auto;
+   padding: 0 !important;
+   height: 300px;
+}
+
+/* end qr code */
+
+/* multiselect dropdown */
+.brfmultiselect .btn-group ul {
+   max-height: 300px;
+}
+
+.brfmultiselect .btn-group ul a {
+   padding-left: 14px;
+}
+
+.brfmultiselect .btn-group button {
+   /* background: whitesmoke;
+border: 1px solid #ccc;
+color: slategrey; */
+
+   margin-bottom: .6rem;
+}
+
+/* multiselect dropdown end */
+
+
+/* small label */
+.label-sm {
+   font-size: small !important;
+}
+
+/* end small label */
+
+
+/* overwrite bootstrap form-group */
+.form-group {
+   margin-bottom: .6rem !important;
+}
+
+/* end form-group */
+
+
+/* dropdown search map */
+
+#search-from-form ul {
+
+   z-index: 1010 !important;
+}
+
+#search-from-form ul li:hover {
+   background: #007bff !important;
+   color: white !important;
+   cursor: pointer;
+}
+
+#search-from-form ul li a {
+   padding: .5em !important;
+   color: #607d8b;
+}
+
+#search-from-form ul li:hover a,
+#search-from-form ul li a:hover {
+   cursor: pointer;
+   color: white;
+}
+
+#search-from-form ul li a:hover {
+   padding: .5em !important;
+}
+
+/* end dropdown search */
+
+
+/* no padding card */
+
+.gmap_unix {
+   padding: 0 !important;
+}
+
+/* end no padding card */
+
+
+/* bootstrap3 */
+
+.brfmultiselect .dropdown-menu .divider {
+   height: 1px;
+   margin: 9px 0;
+   overflow: hidden;
+   background-color: #e5e5e5;
+}
+
+.brfmultiselect .dropdown-menu>li>a {
+   display: block;
+   padding: 3px 20px;
+   clear: both;
+   font-size: small;
+   font-weight: normal;
+   line-height: 1.42857143;
+   color: #333;
+   white-space: nowrap;
+}
+
+.brfmultiselect .dropdown-menu>li>a:hover,
+.brfmultiselect .dropdown-menu>li>a:focus {
+   color: #262626;
+   text-decoration: none;
+   background-color: #d6d3d3fa;
+}
+
+.brfmultiselect .dropdown-menu>.active>a,
+.brfmultiselect .dropdown-menu>.active>a:hover,
+.brfmultiselect .dropdown-menu>.active>a:focus {
+   color: #fff;
+   text-decoration: none;
+   background-color: #337ab7;
+   outline: 0;
+}
+
+/* end bootstrap 3 */
+
+
+/* place tags */
+
+.taglist {
+   margin-top: .5em;
+}
+
+.tags-badge {
+   margin: 0 .4em .2em 0;
+   margin-right: 1em;
+   padding: 6px 9px;
+   /* display: inline-block; */
+}
+
+.tags-badge,
+.type-card {
+   /* background: #e3eaf6;
+   border: 1px solid #a9b6d2;
+   color: black;
+   font-weight: lighter;
+   border-radius: 1px; */
+
+   color: #fff;
+   background-color: #17a2b8;
+   display: inline-block;
+   padding: .25em .4em;
+   font-size: 75%;
+   font-weight: 700;
+   line-height: 1;
+   text-align: center;
+   white-space: nowrap;
+   vertical-align: baseline;
+   border-radius: .25rem;
+   margin-right: .3rem;
+}
+
+.type-card {
+   padding: .3em;
+   text-align: center;
+}
+
+/* end place tags */
+
+
+
+/* custom login/reg div */
+
+.bkoi-signup-form {
+   width: 25em;
+   padding: 20px 30px 10px !important;
+
+}
+
+.bkoi-login-form {
+   width: 25em;
+}
+
+/* end custom login/reg div */
+
+
+
+/* content div containing wide maps */
+
+.map-content {
+   padding: 0;
+}
+
+.map-content .map {
+   height: 100vh;
+}
+
+.small-map-content .map {
+   height: 78vh !important;
+}
+
+.map-content-with-search .map {
+   height: 82vh;
+}
+
+.map-content .card {
+   margin-bottom: 0;
+}
+
+.map-content .row {
+   margin-left: 0;
+   margin-right: 0;
+}
+
+.map-content .col-md-12,
+.map-content .col-md-8,
+.map-content .col-md-4 {
+   padding-left: 0;
+   padding-right: 0;
+}
+
+.map-content .card {
+   border-radius: 0;
+}
+
+@media screen and (min-width: 1400px) {
+   .map-content .map {
+      height: 85vh;
+   }
+
+   .small-map-content-bread .map {
+      height: 78vh !important;
+   }
+
+}
+
+/* content div containing wide maps End */
+
+/* dashboard widget */
+
+.stat-text {
+   font-size: 20px;
+   color: #455a64;
+}
+
+.daily-analytics-card {
+   border-bottom-left-radius: 0;
+   border-bottom-right-radius: 0;
+}
+
+.analytics-card-group .card:first-of-type {
+   border-top-left-radius: 0;
+}
+
+.analytics-card-group .card:last-of-type {
+   border-top-right-radius: 0;
+}
+
+.text-muted-daily {
+   /* font-size: 13.96px; */
+   color: #99abb4;
+}
+
+@media screen and (max-width: 1316px) {
+   .stat-widget-five .stat-icon {
+      font-size: 40px;
+      left: 25px;
+   }
+
+   .stat-widget-five .stat-content {
+      margin-left: 70px;
+   }
+
+}
+
+@media screen and (max-width: 1200px) {
+   .stat-widget-five .stat-icon {
+      font-size: 30px;
+      left: 20px;
+   }
+
+   .stat-widget-five .stat-content {
+      margin-left: 70px;
+   }
+}
+
+@media screen and (max-width: 1150px) {
+   .stat-widget-five .stat-heading {
+      font-size: 13px;
+   }
+
+   .stat-widget-five .stat-text {
+      font-size: 16px;
+   }
+
+   .stat-widget-five .stat-text {
+      color: #455a64;
+      font-size: 16px;
+   }
+    .stat-widget-five .stat-content {
+      margin-left: 50px;
+   }
+}
+
+/* dashboard widget end */
+
+
+
+/* sidebar custom class */
+
+.sub-menu {
+   display: none;
+   list-style: none  ;
+   padding-left: 50px;
+
+}
+
+.sub-menu-mapper{
+   padding-left: 40px;
+   list-style: none  ;
+}
+
+.menu-title .pull-right {
+   margin-top: .25em;
+}
+
+.custom-sidebar .menu-title a {
+   font-weight: 600 !important;
+}
+
+.custom-sidebar .menu-title {
+   cursor: default;
+}
+
+
+.mapper-menu-title {
+   color: #41434d;
+   clear: both;
+   display: block;
+   font-size: 14px;
+   font-weight: 700;
+   line-height: 50px;
+   padding: 0;
+   text-transform: uppercase;
+   width: 100%;
+}
+
+/* sidebar custom end */
+
+/* local admin polyline road  */
+
+.local-polyline-road .multiselect-container.open .multiselect-menu {
+   max-height: 10em !important;
+}
+
+/* lcoal admin card header icons */
+
+.card-header-icons i {
+   margin-left: 1.2em;
+   cursor: pointer;
+}
+
+.card-header-icons i:hover, .card-header-icons i:focus {
+   color: #007bff;
+}
+
+/* activity search */
+.search-query-pagination ul li {
+   padding-left: 10px;
+}
+
+/* weather */
+.weather-ow {
+   color: #99abb4;
+   padding-right: 5px;
+}
+
+/*dropdown-custom */
+
+/* .dropbtn-custom {
+   position: relative;
+} 
+
+.dropdown-content-custom {
+   display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content-custom a {
+   color: black;
+   padding: 12px 16px;
+   text-decoration: none;
+   display: block;
+ } */
+
+/* .dropbtn-custom:hover .dropdown-content-custom {display: block;} */
+
+/* TOKAI  */
+
+.dropdown-menu {
+   z-index: 9999;
+}
+
+.blink_text {
+   animation: blinker 1.5s linear infinite;
+
+}
+
+@keyframes blinker {
+   50% {
+     opacity: 0;
+   }
+ }
+
+ .download-footer {
+    background-color: #fff !important;
+
+ }
+
+ .download-footer button {
+   padding: 5px 12px !important;
+   color: #fff !important;
+ }
+ .download-footer .btn-success{
+
+
+    background-color: #28a745 !important;
+    border-color: #28a745 !important;
+
+
+ }
+
+ .download-footer .btn-dark {
+   background-color: #343a40 !important;
+   border-color: #343a40 !important;
+ }
+
+ /* TOKAI END  */
+
+ .countryLabel{
+  background: rgba(255, 255, 255, 0);
+  border:0;
+  font: 'Roboto';
+  font-size: small;
+  font-weight: bold;
+  border-radius:0px;
+  box-shadow: 0 0px 0px;
+}

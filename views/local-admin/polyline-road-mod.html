@@ -1,0 +1,62 @@
+ <div class="animated ">
+   <div class="modal-header">
+     <h3 class="modal-title">Road Polyline</h3>
+   </div>
+   <div class="modal-body">
+     <form class="form" ng-submit="create_road_polyline(area, subarea, road_number, raod_lane, speed)">
+
+       <div class="col-md-12">
+         <label class="label">Area: </label>
+         <select ng-model="area" name="area" ng-options="opt.area_name for opt in areas" class="form-control"
+           ng-change="set_area(area)">
+         </select>
+       </div>
+
+       <div class="col-md-12">
+         <label class="label">SubArea: </label>
+         <select ng-model="subarea" name="subarea" ng-options="opt.subarea_name for opt in subareas"
+           class="form-control">
+         </select>
+       </div>
+
+       <div class="col-md-12">
+         <label class="label">Road Name/Number </label>
+         <input type="text" placeholder="road number/name" class="form-control" ng-model="road_number" />
+       </div>
+
+       <div class="col-md-12">
+         <label class="label">Road Lane </label>
+         <input type="text" placeholder="Road Lane" class="form-control" ng-model="raod_lane" />
+       </div>
+
+       <div class="col-md-12">
+         <label class="label">Speed</label>
+         <input type="text" placeholder="Speed" class="form-control" ng-model="speed" />
+       </div>
+
+       <div class="col-md-12 my-2">
+         <div class="local-polyline-road">
+           <div so-multiselect items="roadtypes" name="Road Type" on-selected="onRoadSelect(selectedItems)"
+             button-class="btn-grey" style="max-height:300px;">
+           </div>
+         </div>
+
+       </div>
+
+       <div class="col-md-12">
+         <button class="btn btn-md btn-success mt-2" type="submit">Create Polyline</button>
+       </div>
+
+
+
+     </form>
+
+   </div>
+
+
+
+   <div class="modal-footer">
+    <button class="btn btn-md btn-danger mt-2" type="submit" ng-click="ok()">Cancel</button>
+
+   </div>
+ </div>
