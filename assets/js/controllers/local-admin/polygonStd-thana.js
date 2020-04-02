@@ -12,7 +12,6 @@
         $scope.dynamicIconSize = [25, 25]
 
         var addressPointsToMarkers = function(points) {
-        console.log(points)
             return points.map(function(ap, idx) {
                var icon = './assets/img/dot.png';
               
@@ -321,7 +320,7 @@
                     $scope.district_list = csvToArray(text, ",")
                     $scope.district_list = deleteRow($scope.district_list, 1)
                     $scope.district_list = deleteRow($scope.district_list, $scope.district_list.length)
-                    console.log($scope.district_list)
+                    // console.log($scope.district_list)
 
                 },
                 function () {
@@ -353,7 +352,7 @@
                     $scope.udc_points = csvToArray(text, ",")
                     $scope.udc_points = deleteRow($scope.udc_points, 1)
                     $scope.udc_points = deleteRow($scope.udc_points, $scope.udc_points.length)
-                    console.log($scope.udc_points)
+                    // console.log($scope.udc_points)
                     $scope.markers = addressPointsToMarkers($scope.udc_points)
 
                 },
@@ -361,13 +360,34 @@
 
                 });
 
-            Auth.getlocations(urls.POLYGON_THANA + '?', function (res) {
-                    $scope.thanas = res;
+            // Auth.getlocations(urls.POLYGON_THANA + '?', function (res) {
+            //         $scope.thanas = res;
+
+            //     },
+            //     function () {
+
+            //     });
+            Auth.getlocations('./data/provider.csv', function (text) {
+                    var item_provider_list = csvToArray(text, ",")
+                    item_provider_list = deleteRow(item_provider_list, 1)
+                    item_provider_list = deleteRow(item_provider_list, item_provider_list.length)
+
+                    $scope.item_provider_grouped_obj = groupBy(item_provider_list, 1)
+                    // console.log($scope.item_provider_grouped_list)
+                    console.clear();
+                    for (const items in $scope.item_provider_grouped_obj) {
+                        $scope.item_provider_grouped_obj[items].map(function(item) {
+                            console.log(item[3])
+                        })
+                        // console.log($scope.item_provider_grouped_obj[items])
+                    }
+                    // $scope.markers = addressPointsToMarkers($scope.udc_points)
 
                 },
                 function () {
 
                 });
+
 
         };
         init();
@@ -543,6 +563,22 @@
             return self.indexOf(value) === index;
         }
 
+
+        var groupBy = function(xs, key) {
+              return xs.reduce(function(rv, x) {
+                    if(x[key].split(',').length == 1){
+                        (rv[x[key.toString().trim()]] = rv[x[key.toString().trim()]] || []).push(x);
+                    }
+                    else{
+                        x[key].split(',').map(function(singleKey) {
+                            (rv[singleKey.toString().trim()] = rv[singleKey.toString().trim()] || []).push(x);
+                        })                    
+                    }
+                    return rv;
+                    
+              }, {});
+        };
+
         $scope.$watch("center.zoom", function(zoom) {
                 $scope.dynamicIconSize  = (zoom > 12)
                         ?  [25, 25]
@@ -564,8 +600,8 @@
 
 
                     $scope.division_list.map(function(dl) {
-                        console.log('the geo string test')
-                        console.log(dl[1].toString())
+                        // console.log('the geo string test')
+                        // console.log(dl[1].toString())
                         let geoJsonForm = 
                         {
                           "type": "Feature",
@@ -588,7 +624,7 @@
                     $scope.geojson_division.map(function(geo_array, k) {
                         console.log('print all geo arrray')
                         var polyjson =  geo_array['geometry'];
-                        console.log(polyjson)
+                        // console.log(polyjson)
                         $scope.Feature.push(geo_array);
 
 
@@ -630,7 +666,7 @@
                     $scope.district_wise_data.map(function(dis_data) {
                         all_unique_district_pairs.push(dis_data.district_cover)
                     })
-                    console.log(all_unique_district_pairs.flat())
+                    // console.log(all_unique_district_pairs.flat())
                     $scope.geojson_district = []
                     $scope.geojson_division = null
                     $scope.geojson_dhaka = null
@@ -664,7 +700,7 @@
                     $scope.geojson_district.map(function(geo_array, k) {
                         console.log('print all geo arrray')
                         var polyjson =  geo_array['geometry'];
-                        console.log(polyjson)
+                        // console.log(polyjson)
                         $scope.Feature.push(geo_array);
 
 
@@ -706,8 +742,8 @@
                     $scope.geojson_dhaka = []
 
                     $scope.dhaka_list.map(function(dl) {
-                        console.log('the geo string test')
-                        console.log(dl[1].toString())
+                        // console.log('the geo string test')
+                        // console.log(dl[1].toString())
                         let geoJsonForm = 
                         {
                           "type": "Feature",
